@@ -72,7 +72,7 @@ $(function(){
             <a href="#">펜션안내</a>
              <ul>
                 <li><a href="#">찾아오는 길</a></li>
-                <li><a href="#">편의시설</a></li>
+                <li><a href="${pageContext.request.contextPath}/photo/list.do">편의시설</a></li>
                 <li><a href="${pageContext.request.contextPath}/notice/list.do">★이용전 필독사항★</a></li> 
                 <li><a href="${pageContext.request.contextPath}/faq/list.do">자주하는 질문</a><li>
                 <li><a href="${pageContext.request.contextPath}/qna/list.do">1:1 질문</a><li>               
