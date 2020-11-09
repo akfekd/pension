@@ -19,8 +19,8 @@ public class NoticeDAO {
 		
 		try {
 			sb.append("INSERT INTO notice ");
-			sb.append(" (notice, userId, subject, content, saveFilename, originalFilename, filesize , created)");
-			sb.append(" VALUES (?, ?, ?, ?, ?, ?, ?, SYSDATE)");
+			sb.append(" (num,notice, userId, subject, content, saveFilename, originalFilename, filesize , created)");
+			sb.append(" VALUES (notice_seq.NEXTVAL,?, ?, ?, ?, ?, ?, ?, SYSDATE)");
 			
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, dto.getNotice());
