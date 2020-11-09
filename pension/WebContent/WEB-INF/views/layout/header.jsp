@@ -82,7 +82,7 @@ $(function(){
             <ul>
                 <li><a href="${pageContext.request.contextPath}/festival/list.do">주변 축제 정보</a></li>
                 <li><a href="${pageContext.request.contextPath}/restaurant/list.do">주변 맛집 정보</a></li>
-                <li><a href="${pageContext.request.contextPath}/spot/list.doz">주변 관광지 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/spot/list.do">주변 관광지 정보</a></li>
             </ul>
         </li>
        
