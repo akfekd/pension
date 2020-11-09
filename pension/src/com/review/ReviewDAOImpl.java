@@ -177,7 +177,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		try {
 			sb.append("select userName, v.userId, r.roomId, f.roomname, v.rsvtNum, v.content, v.created, star"); 
 			sb.append(" from review v join reservation r on r.rsvtNum=v.rsvtNum join roomInfo f on r.roomId=f.roomId");
-			sb.append(" order by rsvtnum desc");
+			sb.append(" order by created desc");
 			sb.append(" offset ? rows fetch first ? rows only");
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setInt(1, offset);
@@ -232,7 +232,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 			sb.append("select userName, v.userId, r.roomId, f.roomname, v.rsvtNum, v.content, v.created, star"); 
 			sb.append(" from review v join reservation r on r.rsvtNum=v.rsvtNum join roomInfo f on r.roomId=f.roomId");
 			sb.append(" where instr(r.roomId, ?)>=1");
-			sb.append(" order by rsvtNum desc");
+			sb.append(" order by created desc");
 			sb.append(" offset ? rows fetch first ? rows only");
 			
 			pstmt=conn.prepareStatement(sb.toString());
