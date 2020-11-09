@@ -6,16 +6,16 @@
 <script type="text/javascript">
 //엔터 처리
 $(function(){
-      $("input").not($(":button")).keypress(function (evt) {
-           if (evt.keyCode == 13) {
-               var fields = $(this).parents('form,body').find('button,input,textarea,select');
-               var index = fields.index(this);
-               if ( index > -1 && ( index + 1 ) < fields.length ) {
-                   fields.eq( index + 1 ).focus();
-               }
-               return false;
-           }
-        });
+	   $("input").not($(":button")).keypress(function (evt) {
+	        if (evt.keyCode == 13) {
+	            var fields = $(this).parents('form,body').find('button,input,textarea,select');
+	            var index = fields.index(this);
+	            if ( index > -1 && ( index + 1 ) < fields.length ) {
+	                fields.eq( index + 1 ).focus();
+	            }
+	            return false;
+	        }
+	     });
 });
 </script>
 
@@ -49,7 +49,7 @@ $(function(){
 <div class="menu">
     <ul class="nav">
         <li>
-            <a href="#">예약</a>
+            <a href="${pageContext.request.contextPath}/reserve/reserve.do">예약</a>
             <!-- <ul>
                 <li><a href="#"></a></li>
                 <li><a href="#"></a></li>
@@ -59,12 +59,12 @@ $(function(){
             </ul>
              -->
         </li>
-         
+			
         <li>
             <a href="#">숙소정보</a>
-            <ul>
-                <li><a href="#">숙소목록</a></li>
-                <li><a href="#">숙소별 후기</a></li>
+           <ul>
+                <li><a href="${pageContext.request.contextPath}/roominfo/list.do">숙소목록</a></li>
+                <li><a href="${pageContext.request.contextPath}/review/list.do">리뷰</a></li>
             </ul>
         </li>
 
@@ -80,32 +80,27 @@ $(function(){
         <li>
             <a href="#">숙소 주변 즐길거리</a>
             <ul>
-                <li><a href="#">주변 축제 정보</a></li>
-                <li><a href="#">주변 맛집 정보</a></li>
-                <li><a href="#">주변 관광지 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/bbs/list.do">주변 축제 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/restaurant/list.do">주변 맛집 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/spot/list.doz">주변 관광지 정보</a></li>
             </ul>
         </li>
-     <!--   
+       
         <li>
-            <a href="#">숙소 주변 즐길거리</a>
+            <a href="#">고객센터</a>
             <ul>
-                <li><a href="#">주변 축제 정보</a></li>
-                <li><a href="#">주변 맛집 정보</a></li>
-                <li><a href="#">주변 관광지 정보</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">문의사항</a></li>
+                <li><a href="#">공지사항</a></li>
             </ul>
         </li>
-         --> 
+        
 
         <c:if test="${not empty sessionScope.member && sessionScope.member.userId !='admin'}">
         <li>
             <a href="#">마이페이지</a>
             <ul>
-                <li><a href="#" style="margin-left:230px; " onmouseover="this.style.marginLeft='230px';">정보확인</a></li>
-                <li><a href="#">쪽지</a></li>
-                <li><a href="#">일정관리</a></li>
-                <li><a href="#">친구관리</a></li>
-                <li><a href="#">사진첩</a></li>
-                <li><a href="#">채팅</a></li>
+                <li><a href="${pageContext.request.contextPath}/notice/list.do">정보확인</a></li>
             </ul>
         </li>
         </c:if>
@@ -114,7 +109,7 @@ $(function(){
         <li>
             <a href="#">관리</a>
             <ul>
-                <li><a href="#">회원목록</a></li>
+                <li><a href="${pageContext.request.contextPath}/member/list.do">회원목록</a></li>
                 <li><a href="#">숙소별 예약현황</a></li>
                 <li><a href="#">매출관리</a></li>              
             </ul>
@@ -127,5 +122,5 @@ $(function(){
 </div>
 
 <div class="navigation">
-   <div class="nav-bar">홈 &gt; 회사소개</div>
+	<div class="nav-bar">홈 &gt; 회사소개</div>
 </div>
