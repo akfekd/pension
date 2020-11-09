@@ -13,7 +13,7 @@ import com.member.SessionInfo;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
-@WebServlet("/notice/*")
+@WebServlet("/manage/*")
 public class ReservationServlet extends MyServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -73,11 +73,11 @@ public class ReservationServlet extends MyServlet {
 			n++;
 		}
 		
-		String listUrl=cp+"/notice/list.do";
-		String articleUrl=cp+"/notice/article.do";
+		String listUrl=cp+"/manage/list.do";
+		String articleUrl=cp+"/manage/article.do";
 		String paging=util.paging(current_page, total_page, listUrl);
 		
-		// /WEB-INF/views/notice/list.jsp에 넘겨줄 데이터
+		// /WEB-INF/views/manage/list.jsp에 넘겨줄 데이터
 		req.setAttribute("list", list);
 		req.setAttribute("dataCount", dataCount);
 		req.setAttribute("total_page", total_page);
@@ -85,7 +85,7 @@ public class ReservationServlet extends MyServlet {
 		req.setAttribute("paging", paging);
 		req.setAttribute("articleUrl", articleUrl);
 		
-		forward(req, resp, "/WEB-INF/views/notice/list.jsp");
+		forward(req, resp, "/WEB-INF/views/manage/list.jsp");
 	}
 	
 	protected void article(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -99,13 +99,13 @@ public class ReservationServlet extends MyServlet {
 			// 게시글
 			ReservationDTO dto=dao.readBoard(rsvtNum);
 			if(dto==null) {
-				resp.sendRedirect(cp+"/notice/list.do");
+				resp.sendRedirect(cp+"/not/list.do");
 				return;
 			}
 			
 			req.setAttribute("dto", dto);
 		
-			String path="/WEB-INF/views/notice/article.jsp";
+			String path="/WEB-INF/views/manage/article.jsp";
 			forward(req, resp, path);
 			return;
 		} catch (Exception e) {
@@ -113,7 +113,7 @@ public class ReservationServlet extends MyServlet {
 		 
 		}
 		
-		resp.sendRedirect(cp+"/notice/list.do");
+		resp.sendRedirect(cp+"/manage/list.do");
 		
 	}
 	
@@ -133,7 +133,7 @@ public class ReservationServlet extends MyServlet {
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect(cp+"/notice/list.do");
+		resp.sendRedirect(cp+"/manage/list.do");
 	}
 	 
 }
