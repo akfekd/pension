@@ -17,4 +17,5 @@ public interface ReviewDAO {
 	public List<ReviewDTO> listReview(int offset, int rows, String keyword);
 	
 	public List<ReviewDTO> listRsv(String userId);
+	public ReviewDTO readReview(int rsvtNum);
 }

@@ -28,6 +28,7 @@
 }
 
 .starLayout {font-size:0; letter-spacing:-4px;}
+
 .starLayout a {
     font-size:22px;
     letter-spacing:0;
@@ -44,7 +45,8 @@
 function sendReview() {
 	var f=document.reviewForm;
 	
-	if (! f.rsvtNum.value) {
+	var m="${mode}";
+	if (m!="update" && ! f.rsvtNum.value) {
 		alert("예약번호를 선택하세요.");
 		f.rsvtNum.focus();
 		return;
@@ -88,7 +90,7 @@ $(function(){
 	</div>
 	
 	<div class="reviewLayout">
-		<form name="reviewForm">
+		<form name="reviewForm" method="post">
 		<table style="margin-top: 20px;">
 			<tr height="40" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
 				<td align="center" width="100" bgcolor="#eee">작성자</td>
@@ -97,10 +99,10 @@ $(function(){
 				</td>
 				<td align="center" width="100" bgcolor="#eee">예약번호</td>
 				<td style="padding-left: 10px;">
-					<select name="rsvtNum" style="width: 100px" onchange="selectRsv();">
+					<select name="rsvtNum" style="width: 100px" onchange="selectRsv();" ${mode=='update'?"disabled='disabled'":""}>
 						<option value="">예약번호</option>
 					<c:forEach var="vo" items="${listRsv}">
-						<option value="${vo.rsvtNum}">${vo.roomName}(${vo.rsvtNum})</option>
+						<option value="${vo.rsvtNum}" ${dto.rsvtNum==vo.rsvtNum?"selected='selected'":""}>${vo.roomName}(${vo.rsvtNum})</option>
 					</c:forEach>
 					</select>
 				</td>
@@ -124,14 +126,18 @@ $(function(){
 			<tr height="100" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;">
 				<td align="center" width="100" bgcolor="#eee" valign="top" style="padding-top: 5px;">내 용</td>
 				<td colspan="3" valign="top" style="padding: 5px 0 5px 10px;">
-					<textarea name="content" class="boxTA" style="width: 95%;"></textarea>
+					<textarea name="content" class="boxTA" style="width: 95%;">${dto.content}</textarea>
 				</td>
 
 			</tr>
 			
 			<tr height="40">
 				<td colspan="4" align="right">
-				<button type="button" class="btn" onclick="sendReview();">등록하기</button>
+				<c:if test="${mode=='update'}">
+					<input type="hidden" name="rsvtNum" value="${dto.rsvtNum}">
+					<input type="hidden" name="page" value="${page}">
+				</c:if>
+				<button type="button" class="btn" onclick="sendReview();">${mode=='update'?'수정완료':'등록하기'}</button>
 				<button type="reset" class="btn">다시입력</button></td>
 			</tr>	
 		</table>
