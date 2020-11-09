@@ -47,7 +47,7 @@ public class BoardServlet  extends MyUploadServlet {
 		 //이미지 저장할 경로
 	      //이미지는 반드시 루트 아래에 폴더를 만들고 올려야함
 	      String root=session.getServletContext().getRealPath("/");
-	      pathname=root+"uploads"+File.separator+"bbs";
+	      pathname=root+"uploads"+File.separator+"festival";
 	      
 	      
 		String uri = req.getRequestURI();
@@ -142,8 +142,8 @@ public class BoardServlet  extends MyUploadServlet {
 			query="condition="+condition+"&keyword="+URLEncoder.encode(keyword,"utf-8");
 		}
 		
-		String listUrl = cp+"/bbs/list.do";
-		String articleUrl = cp+"/bbs/article.do?page="+current_page;
+		String listUrl = cp+"/festival/list.do";
+		String articleUrl = cp+"/festival/article.do?page="+current_page;
 		if(query.length()!=0) {
 			listUrl+="?"+query;
 			articleUrl +="&"+query;
@@ -159,14 +159,14 @@ public class BoardServlet  extends MyUploadServlet {
 		req.setAttribute("condition", condition);
 		req.setAttribute("keyword", keyword);
 	
-		String path = "/WEB-INF/views/bbs/list.jsp";
+		String path = "/WEB-INF/views/festival/list.jsp";
 		forward(req, resp, path);
 	}
 	
 	protected void createdForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//글쓰기 폼
 		req.setAttribute("mode", "created");
-		String path = "/WEB-INF/views/bbs/created.jsp";
+		String path = "/WEB-INF/views/festival/created.jsp";
 		forward(req, resp, path);
 	}
 	
@@ -196,7 +196,7 @@ public class BoardServlet  extends MyUploadServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect(cp+"/bbs/list.do");
+		resp.sendRedirect(cp+"/festival/list.do");
 	}
 	
 	protected void article(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -228,7 +228,7 @@ public class BoardServlet  extends MyUploadServlet {
 			//게시글
 			BoardDTO dto = dao.readBoard(num);
 			if(dto == null) {
-				resp.sendRedirect(cp+"/bbs/list.do?"+query);
+				resp.sendRedirect(cp+"/festival/list.do?"+query);
 				return;
 			}
 			
@@ -243,7 +243,7 @@ public class BoardServlet  extends MyUploadServlet {
 			req.setAttribute("query", query);
 			req.setAttribute("page", page);
 			
-			String path = "/WEB-INF/views/bbs/article.jsp";
+			String path = "/WEB-INF/views/festival/article.jsp";
 			forward(req,resp,path);
 			return;
 					
@@ -266,19 +266,19 @@ public class BoardServlet  extends MyUploadServlet {
 			BoardDTO dto =dao.readBoard(num);
 			
 			if(dto == null || ! dto.getUserId().equals(info.getUserId())) {
-				resp.sendRedirect(cp+"/bbs/list.do?page="+page);
+				resp.sendRedirect(cp+"/festival/list.do?page="+page);
 				return;
 			}
 			
 			req.setAttribute("dto", dto);
 			req.setAttribute("page", page);
 			req.setAttribute("mode", "update");
-			String path = "/WEB-INF/views/bbs/created.jsp";
+			String path = "/WEB-INF/views/festival/created.jsp";
 			forward(req,resp,path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect(cp+"/bbs/list.do?page="+page);
+		resp.sendRedirect(cp+"/festival/list.do?page="+page);
 	}
 	
 	protected void updateSubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -318,7 +318,7 @@ public class BoardServlet  extends MyUploadServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect(cp+"/bbs/list.do?page="+page);
+		resp.sendRedirect(cp+"/festival/list.do?page="+page);
 	}
 	
 	protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -354,6 +354,6 @@ public class BoardServlet  extends MyUploadServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		resp.sendRedirect(cp+"/bbs/list.do?"+query);
+		resp.sendRedirect(cp+"/festival/list.do?"+query);
 	}
 }

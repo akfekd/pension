@@ -73,27 +73,22 @@ $(function(){
              <ul>
                 <li><a href="#">찾아오는 길</a></li>
                 <li><a href="#">편의시설</a></li>
-                <li><a href="#">★이용전 필독사항★</a></li>             
+                <li><a href="${pageContext.request.contextPath}/notice/list.do">★이용전 필독사항★</a></li> 
+                <li><a href="${pageContext.request.contextPath}/faq/list.do">자주하는 질문</a><li>
+                <li><a href="${pageContext.request.contextPath}/qna/list.do">1:1 질문</a><li>               
             </ul>
         </li>
 
         <li>
             <a href="#">숙소 주변 즐길거리</a>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/bbs/list.do">주변 축제 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/festival/list.do">주변 축제 정보</a></li>
                 <li><a href="${pageContext.request.contextPath}/restaurant/list.do">주변 맛집 정보</a></li>
-                <li><a href="${pageContext.request.contextPath}/spot/list.doz">주변 관광지 정보</a></li>
+                <li><a href="${pageContext.request.contextPath}/spot/list.do">주변 관광지 정보</a></li>
             </ul>
         </li>
        
-        <li>
-            <a href="#">고객센터</a>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">문의사항</a></li>
-                <li><a href="#">공지사항</a></li>
-            </ul>
-        </li>
+   
         
 
         <c:if test="${not empty sessionScope.member && sessionScope.member.userId !='admin'}">
