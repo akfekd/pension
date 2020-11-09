@@ -105,7 +105,7 @@ $(function(){
             <a href="#">관리</a>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/member/list.do">회원목록</a></li>
-                <li><a href="#">숙소별 예약현황</a></li>
+                <li><a href="${pageContext.request.contextPath}/manage/roomList.do">숙소별 예약현황</a></li>
                 <li><a href="#">매출관리</a></li>              
             </ul>
         </li>
