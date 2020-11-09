@@ -18,7 +18,7 @@
 <style type="text/css">
 .reviewLayout {
 	width: 1000px;
-	margin: 30px auto;
+	margin: 40px auto;
 }
 
 .reviewLayout table {
@@ -45,9 +45,39 @@
 	background: white;
 	outline: none;
 }
+
+.starLayout {
+    color:#F2CB61;
+}
+
+.selectbtn {
+	border: 0;
+	padding: 5px;
+	border-radius: 5px;
+	background: white;
+}
+
+.selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
+	border: 1px solid #6FA869;
+	background: white;
+	outline: none;
+}
+
+.reviewheader {
+	background: #6FA869;
+	color: white;
+	padding: 5px;
+}
+
 </style>
 <script type="text/javascript">
 
+function deleteReview(rsvtNum) {
+	if(confirm("게시물을 삭제 하시겠습니까 ?")) {
+		var url="${pageContext.request.contextPath}/review/delete.do?page=${page}&rsvtNum="+rsvtNum;
+		location.href=url;
+	}
+}
 </script>
 </head>
 <body>
@@ -60,26 +90,40 @@
     <div class="body-container" style="width: 1000px;">
 	<div class="body-title">
 		 <h3><span style="font-family: Webdings">2</span>&nbsp;Review </h3>
+		 <form name="searchForm" class="selectroom">
+        		<button value="all" type="submit" class="selectbtn" onclick="${pageContext.request.contextPath}/roominfo/list.do">전체보기</button>
+        		<button name="keyword" value="cab" type="submit" class="selectbtn" onclick="searchList('${value}')">카바나</button>
+        		<button name="keyword" value="ope" type="submit" class="selectbtn" onclick="searchList('${value}')">오페라</button>
+        		<button name="keyword" value="fam" type="submit" class="selectbtn" onclick="searchList('${value}')">패밀리</button>
+         </form>
 	</div>
 	
-<form name="listForm">
+<form name="listForm">		
+<c:forEach var="dto" items="${list}">
 	<table class="reviewLayout" style="border-collapse: collapse; border-spacing: 0;">
-		<c:forEach var="dto" items="${list}">
-		<tr height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
-			<td style="padding-left: 10px; font-weight: bold;">${dto.roomName}</td>
-			<td style="padding-left: 10px;" width="70%">(${dto.userName})</td>
-			<td>${dto.created} </td>
-			<td align="left" width="100">
-				<button type="button" style="border: 0; outline: 0;" onclick=""> 수정</button> | 
-				<button type="button" style="border: 0; outline: 0;" onclick="">삭제</button>
+
+		<tr class="reviewheader" height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
+			<td style="padding-left: 10px; font-weight: bold; width: 8%">${dto.roomName}</td>
+			<td class="starLayout" style="width: 8%">			
+			<c:if test="${dto.star==1}">★</c:if>			
+			<c:if test="${dto.star==2}">★★</c:if>			
+			<c:if test="${dto.star==3}">★★★</c:if>
+			<c:if test="${dto.star==4}">★★★★</c:if>
+			<c:if test="${dto.star==5}">★★★★★</c:if>
 			</td>
+			<td style="width: 8%;">/ ${dto.userName} </td>
+			<td colspan="2" style="width=50%; padding-right: 20px; text-align: right;">${dto.created} </td>
 		</tr>
 		<tr>
-			<td style="padding: 10px;" colspan="4">${dto.content}</td>
-			<td>${dto.star}</td>
+			<td style="padding: 10px;" colspan="4">${dto.content}</td>			
+			<c:if test="${sessionScope.member.userId==dto.userId}">
+			<td align="left" width="100">
+				<button type="button" class="selectbtn" onclick="javascript:location.href='${pageContext.request.contextPath}/review/update.do?page=${page}&rsvtNum=${dto.rsvtNum}'">수정</button> | 
+				<button type="button" class="selectbtn" onclick="deleteReview('${dto.rsvtNum}');">삭제</button>
+			</td></c:if>
 		</tr>
-		</c:forEach>
 	</table>
+</c:forEach>
 </form>
 	
 <div>

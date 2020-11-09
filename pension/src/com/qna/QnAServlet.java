@@ -218,40 +218,114 @@ public class QnAServlet extends MyServlet {
 	}
 	
 	protected void updateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 글수정폼
+		// 글수정폼	
+		QnADAO dao=new QnADAOImpl();
+		String cp=req.getContextPath();
+		String page=req.getParameter("page");
+		String query="page="+page;
+		
+		HttpSession session=req.getSession();
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
+	
+		try {
+			String condition=req.getParameter("condition");
+			String keyword=req.getParameter("keyword");
+			if(condition==null) {
+				condition="all";
+				keyword="";
+			}
+			keyword=URLDecoder.decode(keyword, "utf-8");
+			if(keyword.length()!=0) {
+				query+="&condition="+condition+"&keyword="+
+			       URLEncoder.encode(keyword, "utf-8");
+			}
+			
+			int boardNum=Integer.parseInt(req.getParameter("boardNum"));
+			QnADTO dto=dao.readBoard(boardNum);
+			if(dto==null || ! dto.getUserId().equals(info.getUserId())) {
+				resp.sendRedirect(cp+"/qna/list.do?"+query);
+				return;
+			}
+			
+			req.setAttribute("dto", dto);
+			req.setAttribute("page", page);
+			req.setAttribute("mode", "update");
+			req.setAttribute("condition", condition);
+			req.setAttribute("keyword", keyword);
+			
+			forward(req, resp, "/WEB-INF/views/qna/created.jsp");
+			return;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		resp.sendRedirect(cp+"/qna/list.do?"+query);
+		
 	}
 	
 	protected void updateSubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 글수정완료
+		String cp=req.getContextPath();
+		String page=req.getParameter("page");
+		String query="page="+page;
+		
+		if(req.getMethod().equalsIgnoreCase("GET")) {
+			resp.sendRedirect(cp+"/board/list.do");
+			return;
+		}
+		
+		QnADAO dao=new QnADAOImpl();
+		try {
+			String condition=req.getParameter("condition");
+			String keyword=req.getParameter("keyword");
+			if(condition==null) {
+				condition="all";
+				keyword="";
+			}
+			keyword=URLDecoder.decode(keyword, "utf-8");
+			if(keyword.length()!=0) {
+				query+="&condition="+condition+"&keyword="+
+			       URLEncoder.encode(keyword, "utf-8");
+			}
+
+			QnADTO dto=new QnADTO();
+			dto.setBoardNum(Integer.parseInt(req.getParameter("boardNum")));
+			dto.setSubject(req.getParameter("subject"));
+			dto.setContent(req.getParameter("content"));
+			
+			dao.updateBoard(dto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect(cp+"/board/list.do?"+query);
 	}
-	
 	protected void replyForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 답변폼
-		QnADAO dao =new QnADAOImpl();
-		String cp = req.getContextPath();
-		String page= req.getParameter("page");
-		
+		QnADAO dao=new QnADAOImpl();
+		String cp=req.getContextPath();
+		String page=req.getParameter("page");
 		try {
 			int boardNum=Integer.parseInt(req.getParameter("boardNum"));
-			QnADTO dto = dao.readBoard(boardNum);
+			QnADTO dto=dao.readBoard(boardNum);
 			if(dto==null) {
 				resp.sendRedirect(cp+"/qna/list.do?page="+page);
 				return;
 			}
-			String s="["+dto.getSubject()+"]에 대한 답변입니다.\n";
+			String s="["+dto.getSubject()+"] 에 대한 답변입니다.\n";
 			dto.setContent(s);
+			
 			req.setAttribute("dto", dto);
 			req.setAttribute("page", page);
 			req.setAttribute("mode", "reply");
 			
 			forward(req, resp, "/WEB-INF/views/qna/created.jsp");
 			return;
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		resp.sendRedirect(cp+"/qna/list.do?page="+page);
 	}
-	
 	protected void replySubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 답변저장
 		String cp = req.getContextPath();
