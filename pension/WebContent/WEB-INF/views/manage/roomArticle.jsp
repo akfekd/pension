@@ -20,6 +20,18 @@
 		var f=document.searchForm;
 		f.submit();
 	}
+	function deleteMember(userId) {
+		<c:if test="${sessionScope.member.userId=='admin'}">
+			if(confirm("게시물을 삭제하시겠습니까 ?")) {
+				var url="${pageContext.request.contextPath}/member/delete.do";
+				location.href=url+"?&userId="+userId;
+			}
+		</c:if>
+
+		<c:if test="${sessionScope.member.userId!='admin' && sessionScope.member.userId!=dto.userId}">
+			alert('게시글을 삭제할수 있는 권한이 없습니다.');
+		</c:if>
+		}
 </script>
 </head>
 <body>
@@ -31,7 +43,7 @@
 <div class="container">
     <div class="body-container" style="width: 700px;">
         <div class="body-title">
-            <h3><span style="font-family: Webdings">2</span> 게시판 </h3>
+            <h3><span style="font-family: Webdings">2</span> 예약건수 </h3>
         </div>
         
         <div>
@@ -48,25 +60,22 @@
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
 			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
-			      <th width="60" style="color: #787878;">번호</th>
-			      <th style="color: #787878;">제목</th>
-			      <th width="100" style="color: #787878;">작성자</th>
-			      <th width="80" style="color: #787878;">작성일</th>
-			      <th width="60" style="color: #787878;">조회수</th>
+			      <th width="200" style="color: #787878;">방이름</th>
+			      <th style="color: #787878;">정보</th>
+			      <th width="100" style="color: #787878;">요금</th>
+			      <th width="100" style="color: #787878;">개시일</th>
+			      <th width="100" style="color: #787878;">조회수</th>
 			  </tr>
 			 
 			 <c:forEach var="dto" items="${list}">
 			  <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
-			      <td>${dto.listNum}</td>
-			      <td align="left" style="padding-left: 10px;">
-			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
-			           <c:if test="${dto.gap<1}">
-			           	<img src="${pageContext.request.contextPath}/resource/images/new.gif">
-			           </c:if>
+			      <td style="padding-left: 10px;">
+			           <a href="#">${dto.roomName }</a>
 			      </td>
-			      <td>${dto.userName}</td>
-			      <td>${dto.created}</td>
-			      <td>${dto.hitCount}</td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
+			      <td></td>
 			  </tr>
 			 </c:forEach>
 
@@ -86,20 +95,14 @@
 			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/member/list.do';">새로고침</button>
 			      </td>
 			      <td align="center">
-			          <form name="searchForm" action="${pageContext.request.contextPath}/bbs/list.do" method="post">
+			          <form name="searchForm" action="${pageContext.request.contextPath}/member/list.do" method="post">
 			              <select name="condition" class="selectField">
-			                  <option value="all"  ${condition=="all"?"selected='selected'":""}>제목+내용</option>
-			                  <option value="subject"  ${condition=="subject"?"selected='selected'":""}>제목</option>
-			                  <option value="userName" ${condition=="userName"?"selected='selected'":""}>작성자</option>
-			                  <option value="content"  ${condition=="content"?"selected='selected'":""}>내용</option>
-			                  <option value="created"  ${condition=="created"?"selected='selected'":""}>등록일</option>
+			                  <option value="userId" ${condition=="userId"?"selected='selected'":""}>아이디</option>
+			                  <option value="userName"  ${condition=="userName"?"selected='selected'":""}>이름</option>
 			            </select>
 			            <input type="text" name="keyword" class="boxTF" value="${keyword}">
 			            <button type="button" class="btn" onclick="searchList()">검색</button>
 			        </form>
-			      </td>
-			      <td align="right" width="100">
-			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/bbs/created.do';">글올리기</button>
 			      </td>
 			   </tr>
 			</table>

@@ -173,5 +173,51 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	@Override
+	public ReservationDTO readBoard(String roomId) {
+		ReservationDTO dto=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql;
+		
+		try {
+			sql="SELECT rsvtNum, userId, roomId,TO_CHAR(rsvtStart, 'YYYY-MM-DD') rsvtStart, TO_CHAR(rsvtEnd, 'YYYY-MM-DD') rsvtEnd, "
+				+" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum"	
+				+"  FROM reservation WHERE roomId=?"
+				+" ORDER BY rsvtStart DESC";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, roomId);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new ReservationDTO();
+				dto.setRsvtNum(rs.getInt("rsvtNum"));
+				dto.setUserId(rs.getString("userId"));
+				dto.setRoomId(rs.getString("roomId"));
+				dto.setRsvtStart(rs.getString("rsvtStart"));
+				dto.setRsvtEnd(rs.getString("rsvtEnd"));
+				dto.setCreated(rs.getString("created"));
+				dto.setGuestNum(rs.getInt("guestNum"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e2) {
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e2) {
+				}
+			}
+		}
+		
+		return dto;
+	}
 
 }
