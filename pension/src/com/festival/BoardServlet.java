@@ -26,7 +26,7 @@ import com.util.MyUtil;
 import com.util.MyUploadServlet;
 
 @MultipartConfig
-@WebServlet("/bbs/*")	//이거 안넣으면 404 나옴
+@WebServlet("/festival/*")	//이거 안넣으면 404 나옴
 public class BoardServlet  extends MyUploadServlet {
 	private static final long serialVersionUID = 1L;
 
