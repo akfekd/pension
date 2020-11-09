@@ -38,9 +38,9 @@ public class ReviewServlet extends MyServlet {
 		} else if(uri.indexOf("created_ok.do")!=-1) {
 			reviewSubmit(req, resp);
 		} else if(uri.indexOf("update.do")!=-1) {
-			delete(req, resp);
-		} else if(uri.indexOf("delete.do")!=-1) {
-			delete(req, resp);
+			updateForm(req, resp);
+		} else if(uri.indexOf("update_ok.do")!=-1) {
+			updateSubmit(req, resp);
 		} else if(uri.indexOf("delete.do")!=-1) {
 			delete(req, resp);
 		}
@@ -144,15 +144,77 @@ public class ReviewServlet extends MyServlet {
 	}
 	
 	protected void updateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ReviewDAO dao=new ReviewDAOImpl();
+		String cp=req.getContextPath();
+		HttpSession session=req.getSession();
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
+		String page=req.getParameter("page");
 		
+		try {
+			int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+			
+			ReviewDTO dto=dao.readReview(rsvtNum);
+			if(dto==null) {
+				resp.sendRedirect(cp+"/review/list.do?page="+page);
+				return;
+			}
+			
+			List<ReviewDTO> listRsv=dao.listRsv(info.getUserId());
+			req.setAttribute("listRsv", listRsv);
+			req.setAttribute("page", page);
+			req.setAttribute("dto", dto);
+			req.setAttribute("mode", "update");
+
+			forward(req, resp, "/WEB-INF/views/review/created.jsp");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	protected void updateSubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ReviewDAO dao=new ReviewDAOImpl();
+		ReviewDTO dto=new ReviewDTO();
+		String cp=req.getContextPath();
 		
+		if(req.getMethod().equalsIgnoreCase("GET")) {
+			resp.sendRedirect(cp+"/review/list.do");
+			return;
+		}
+		String page=req.getParameter("page");
+		
+		try {
+			dto.setRsvtNum(Integer.parseInt(req.getParameter("rsvtNum")));
+			dto.setContent(req.getParameter("content"));
+			dto.setStar(Integer.parseInt(req.getParameter("star")));
+			dto.setRoomId(req.getParameter("roomId"));
+			dto.setRoomName(req.getParameter("roomName"));
+			
+			dao.updateReview(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect(cp+"/review/list.do?page="+page);
 	}
 	
 	protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String cp=req.getContextPath();
+		ReviewDAO dao=new ReviewDAOImpl();
 		
+		String page=req.getParameter("page");
+		
+		try {
+			int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+			
+			dao.deleteReview(rsvtNum);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect(cp+"/review/list.do?page="+page);
 	}
 
 }
