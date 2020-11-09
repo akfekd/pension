@@ -98,10 +98,8 @@
 			      <td align="center">
 			          <form name="searchForm" action="${pageContext.request.contextPath}/member/list.do" method="post">
 			              <select name="condition" class="selectField">
-			                  <option value="all"  ${condition=="all"?"selected='selected'":""}>아이디or이름</option>
 			                  <option value="userId" ${condition=="userId"?"selected='selected'":""}>아이디</option>
 			                  <option value="userName"  ${condition=="userName"?"selected='selected'":""}>이름</option>
-			                  <option value="created"  ${condition=="created"?"selected='selected'":""}>등록일</option>
 			            </select>
 			            <input type="text" name="keyword" class="boxTF" value="${keyword}">
 			            <button type="button" class="btn" onclick="searchList()">검색</button>

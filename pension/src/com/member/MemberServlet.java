@@ -106,7 +106,11 @@ public class MemberServlet extends HttpServlet{
 			offset=0;
 		
 		List<MemberDTO> list;
-		list=dao.listMembe();
+		if(keyword.length()==0) {
+			list=dao.listMembe();
+		} else {
+			list=dao.listMember(offset, rows, condition, keyword);
+		}
 		
 		
 		// 리스트번호만들기
