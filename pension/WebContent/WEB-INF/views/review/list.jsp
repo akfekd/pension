@@ -18,7 +18,7 @@
 <style type="text/css">
 .reviewLayout {
 	width: 1000px;
-	margin: 30px auto;
+	margin: 40px auto;
 }
 
 .reviewLayout table {
@@ -63,6 +63,12 @@
 	outline: none;
 }
 
+.reviewheader {
+	background: #6FA869;
+	color: white;
+	padding: 5px;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -92,10 +98,11 @@ function deleteReview(rsvtNum) {
          </form>
 	</div>
 	
-<form name="listForm">
+<form name="listForm">		
+<c:forEach var="dto" items="${list}">
 	<table class="reviewLayout" style="border-collapse: collapse; border-spacing: 0;">
-		<c:forEach var="dto" items="${list}">
-		<tr height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
+
+		<tr class="reviewheader" height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
 			<td style="padding-left: 10px; font-weight: bold; width: 8%">${dto.roomName}</td>
 			<td class="starLayout" style="width: 8%">			
 			<c:if test="${dto.star==1}">★</c:if>			
@@ -115,8 +122,8 @@ function deleteReview(rsvtNum) {
 				<button type="button" class="selectbtn" onclick="deleteReview('${dto.rsvtNum}');">삭제</button>
 			</td></c:if>
 		</tr>
-		</c:forEach>
 	</table>
+</c:forEach>
 </form>
 	
 <div>

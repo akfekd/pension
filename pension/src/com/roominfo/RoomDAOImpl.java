@@ -84,6 +84,7 @@ public class RoomDAOImpl implements RoomDAO {
 	@Override
 	public String deleteRoominfo(String roomId) throws SQLException {
 		String result="";
+		ResultSet rs=null;
 		PreparedStatement pstmt=null;
 		String sql;
 		
@@ -92,12 +93,19 @@ public class RoomDAOImpl implements RoomDAO {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, roomId);
 			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getString("");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		} finally {
 			if(pstmt!=null) {
 				pstmt.close();
+			}
+			if(rs!=null) {
+				rs.close();
 			}
 		}
 		
