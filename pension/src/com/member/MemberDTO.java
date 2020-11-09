@@ -2,11 +2,12 @@ package com.member;
 
 public class MemberDTO {
 	private String userId;
-	private String userPwd;
 	private String userName;
+	private String userPwd;
+	private int enabled;
 	private String created;
 	private String tel, tel1, tel2, tel3;
-	private int enabled;
+	private int listNum;
 	
 	public String getUserId() {
 		return userId;
@@ -14,19 +15,25 @@ public class MemberDTO {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getUserPwd() {
-		return userPwd;
-	}
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getCreated_date() {
+	public String getUserPwd() {
+		return userPwd;
+	}
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
+	}
+	public int getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+	public String getCreated() {
 		return created;
 	}
 	public void setCreated(String created) {
@@ -56,11 +63,12 @@ public class MemberDTO {
 	public void setTel3(String tel3) {
 		this.tel3 = tel3;
 	}
-	public int getEnabled() {
-		return enabled;
+	public int getListNum() {
+		return listNum;
 	}
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
+	public void setListNum(int listNum) {
+		this.listNum = listNum;
 	}
 	
-}
+	
+}	
