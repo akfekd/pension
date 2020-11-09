@@ -100,7 +100,7 @@ $(function(){
         <li>
             <a href="#">마이페이지</a>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/notice/list.do">정보확인</a></li>
+                <li><a href="${pageContext.request.contextPath}/mypage/list.do">정보확인</a></li>
             </ul>
         </li>
         </c:if>
