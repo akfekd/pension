@@ -23,18 +23,53 @@
     <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 </div>
 	
-<div class="container">
-    <div class="body-container" style="width: 700px;">
-        <div style="padding-top: 15px;">
-         	   테스트.
-        </div>
-    </div>
-</div>
+
+         	   <div style="overflow:hidden">
+         	   		<div class="section">
+         	   			<div class="inner">
+         	   				<img src="${pageContext.request.contextPath}/resource/images/camp1.jpg">
+         	   			</div>
+         	   			<div class="inner">
+         	   				<img src="${pageContext.request.contextPath}/resource/images/camp2.jpg">
+         	   			</div>
+         	   			<div class="inner">
+         	   				<img src="${pageContext.request.contextPath}/resource/images/camp3.jpg">
+         	   			</div>
+         	   			<div class="inner">
+         	   				<img src="${pageContext.request.contextPath}/resource/images/camp4.jpg">
+         	   			</div>
+         	   			<div class="inner">
+         	   				<img src="${pageContext.request.contextPath}/resource/images/camp5.jpg">
+         	   			</div>
+         	   		</div>
+         	   </div>
+         	   <button class="but1">1</button>
+         	   <button class="but2">2</button>
+         	   <button class="but3">3</button>
+         	   <button class="but4">4</button>
+         	   <button class="but5">5</button>
+
 
 <div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
-
+<script>
+	document.querySelector(".but1").addEventListener('click',function(){
+		document.querySelector('.section').style.transform = 'translate(0vw)';
+	})
+	document.querySelector(".but2").addEventListener('click',function(){
+		document.querySelector('.section').style.transform = 'translate(-100vw)';
+	})
+	document.querySelector(".but3").addEventListener('click',function(){
+		document.querySelector('.section').style.transform = 'translate(-200vw)';
+	})
+	document.querySelector(".but4").addEventListener('click',function(){
+		document.querySelector('.section').style.transform = 'translate(-300vw)';
+	})
+	document.querySelector(".but5").addEventListener('click',function(){
+		document.querySelector('.section').style.transform = 'translate(-400vw)';
+	})
+</script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.ui.datepicker-ko.js"></script>
 </body>

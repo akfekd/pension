@@ -6,7 +6,7 @@
 }
 
 .container {
-    clear:both;
+  
     width:100%;
     text-align:left;
 }
@@ -161,4 +161,15 @@ ul.nav li:hover > ul li a:hover {
     line-height:40px;
     text-align:right;
     background: #ffffff;
+}
+.section {
+	width:500vw;
+	transition:transform 0.5s;
+}
+.inner {
+	width:100vw;
+	float:left;
+}
+.inner img {
+	width:100%;
 }
