@@ -181,17 +181,14 @@ public class MemberDAO {
 	   StringBuilder sb=new StringBuilder();
 	   
 	   try {
-			sb.append("SELECT userId, userName, tell, ");
+			sb.append("SELECT userId, userName, tel, ");
 			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created ");
 			sb.append(" FROM member1");
 			
-			if(condition.equals("created")) {
-				keyword=keyword.replaceAll("(\\-|\\/|\\.)", "");
-				sb.append("  WHERE TO_CHAR(created, 'YYYYMMDD') = ? ");
-			} else if(condition.equals("userName")) {
-				sb.append("  WHERE INSTR(userName, ?) = 1 ");
-			} else {
-				sb.append("  WHERE INSTR("+condition+", ?) >= 1 ");
+			if(condition.equals("userId")) {
+				sb.append("  WHERE INSTR(userId, ?) >= 1 ");
+			}else {
+				sb.append("  WHERE INSTR(userName, ?) >= 1 ");
 			}
 			
 			sb.append(" ORDER BY userId DESC");
