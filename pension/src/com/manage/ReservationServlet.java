@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.member.SessionInfo;
+import com.roominfo.RoomDAO;
+import com.roominfo.RoomDAOImpl;
+import com.roominfo.RoomDTO;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
@@ -35,6 +38,10 @@ public class ReservationServlet extends MyServlet {
 			article(req, resp);
 		}else if(uri.indexOf("delete.do")!=-1) {
 			delete(req, resp);
+		}else if(uri.indexOf("roomList.do")!=-1) {
+			roomList(req, resp);
+		}else if(uri.indexOf("roomArticle.do")!=-1) {
+			roomArticle(req, resp);
 		}
 	}
 	
@@ -73,11 +80,11 @@ public class ReservationServlet extends MyServlet {
 			n++;
 		}
 		
-		String listUrl=cp+"/manage/list.do";
-		String articleUrl=cp+"/manage/article.do";
+		String listUrl=cp+"/mypage/list.do";
+		String articleUrl=cp+"/mypage/article.do";
 		String paging=util.paging(current_page, total_page, listUrl);
 		
-		// /WEB-INF/views/manage/list.jsp에 넘겨줄 데이터
+		// /WEB-INF/views/notice/list.jsp에 넘겨줄 데이터
 		req.setAttribute("list", list);
 		req.setAttribute("dataCount", dataCount);
 		req.setAttribute("total_page", total_page);
@@ -85,7 +92,7 @@ public class ReservationServlet extends MyServlet {
 		req.setAttribute("paging", paging);
 		req.setAttribute("articleUrl", articleUrl);
 		
-		forward(req, resp, "/WEB-INF/views/manage/list.jsp");
+		forward(req, resp, "/WEB-INF/views/mypage/list.jsp");
 	}
 	
 	protected void article(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -99,13 +106,13 @@ public class ReservationServlet extends MyServlet {
 			// 게시글
 			ReservationDTO dto=dao.readBoard(rsvtNum);
 			if(dto==null) {
-				resp.sendRedirect(cp+"/not/list.do");
+				resp.sendRedirect(cp+"/mypage/list.do");
 				return;
 			}
 			
 			req.setAttribute("dto", dto);
 		
-			String path="/WEB-INF/views/manage/article.jsp";
+			String path="/WEB-INF/views/mypage/article.jsp";
 			forward(req, resp, path);
 			return;
 		} catch (Exception e) {
@@ -113,7 +120,7 @@ public class ReservationServlet extends MyServlet {
 		 
 		}
 		
-		resp.sendRedirect(cp+"/manage/list.do");
+		resp.sendRedirect(cp+"/mypage/list.do");
 		
 	}
 	
@@ -133,7 +140,49 @@ public class ReservationServlet extends MyServlet {
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect(cp+"/manage/list.do");
+		resp.sendRedirect(cp+"/mypage/list.do");
 	}
-	 
+	
+	protected void roomList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		RoomDAO dao=new RoomDAOImpl();
+		MyUtil util=new MyUtil();
+		String cp=req.getContextPath();
+		
+		String page=req.getParameter("page");
+		int current_page=1;
+		if(page!=null) {
+			current_page=Integer.parseInt(page);
+		}
+		
+		int dataCount = 0;
+		int rows=10;
+		dataCount=dao.dataCount();
+		int total_page=util.pageCount(rows, dataCount);
+		if(current_page>total_page) 
+			current_page=total_page;
+		// 일단 실행해봐
+		int offset=(current_page-1)*rows;
+		if(offset<0)
+			offset=0;
+		
+		List<RoomDTO> list=dao.listRoom(offset, rows);
+		
+		
+		String listUrl=cp+"/manage/roomList.do";
+		String articleUrl=cp+"/manage/roomArticle.do";
+		String paging=util.paging(current_page, total_page, listUrl);
+		
+		req.setAttribute("list", list);
+		req.setAttribute("dataCount", dataCount);
+		req.setAttribute("total_page", total_page);
+		req.setAttribute("page", current_page);
+		req.setAttribute("paging", paging);
+		req.setAttribute("articleUrl", articleUrl);
+		
+		forward(req, resp, "/WEB-INF/views/manage/roomList.jsp");
+	
+	}
+	
+	protected void roomArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	}
 }
