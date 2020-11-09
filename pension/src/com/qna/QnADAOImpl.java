@@ -411,7 +411,7 @@ public class QnADAOImpl implements QnADAO {
 		String sql;
 		
 		try {
-			sql="SELECT boardNum, b.userId, userName, subject, content, hitCount, created, "
+			sql="SELECT boardNum, b.userId, m.userName, subject, content, hitCount, b.created, "
 				+"  groupNum, orderNo, depth, parent"
 				+"  FROM qna b JOIN member1 m ON b.userId = m.userId WHERE boardNum=?";
 			pstmt=conn.prepareStatement(sql);
