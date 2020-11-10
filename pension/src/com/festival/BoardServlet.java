@@ -108,6 +108,7 @@ public class BoardServlet  extends MyUploadServlet {
 			offset=0;
 		}
 		
+		
 		List<BoardDTO> list;
 		if(keyword.length()==0) {
 			list = dao.listBoard(offset,rows);

@@ -535,6 +535,59 @@ public class BoardDAOImpl implements BoardDAO {
 		}
 		return result;
 	}
+
+	@Override
+	public List<BoardDTO> listCount(int offset, int rows) {
+		List<BoardDTO> list2 = new ArrayList<BoardDTO>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sb= new StringBuilder();
+		
+		try {
+			sb.append("   SELECT num, userName, subject, ");
+			sb.append("   content, f.created, hitCount, imageFilename");
+			sb.append("   FROM festival f ");
+			sb.append("   JOIN member1 m ");
+			sb.append("   ON f.userId = m.userId ");
+			sb.append("   ORDER BY hitCount DESC ");
+			
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, offset);
+            pstmt.setInt(2, rows);
+			
+			
+	        rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            BoardDTO dto = new BoardDTO();
+	            dto.setNum(rs.getInt("num"));
+	            dto.setUserName(rs.getString("userName"));
+	            dto.setSubject(rs.getString("subject"));
+	            dto.setContent(rs.getString("content"));
+	            dto.setCreated(rs.getString("created"));
+	            dto.setHitCount(rs.getInt("hitCount"));
+	            dto.setImageFilename(rs.getNString("imageFilename"));
+	            
+	            list2.add(dto);
+	         }  
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+	         if (rs != null) {
+	             try {
+	                rs.close();
+	             } catch (Exception e2) {
+	             }
+	          }
+	          if (pstmt != null) {
+	             try {
+	                pstmt.close();
+	             } catch (Exception e2) {
+	             }
+	          }
+	       }
+		return list2;
+	}
 }
 
 	

@@ -7,6 +7,7 @@
 body {
     font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     font-size: 14px;
+    font-weight: bold;
     /* line-height: 1.42857143; */
 	/* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
 }
@@ -25,7 +26,7 @@ a:hover, a:active {
 
 .btn {
     color:#333333;
-    font-weight:500;
+    font-weight:900;
     font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     border:1px solid #cccccc;
     background-color:#fff;
