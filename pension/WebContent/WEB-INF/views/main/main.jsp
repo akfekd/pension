@@ -23,7 +23,8 @@
     <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 </div>
 	
-
+<div class="body-container" style="width: 700px;">
+        <div style="padding-top: 15px;">
          	   <div style="overflow:hidden">
          	   		<div class="section">
          	   			<div class="inner">
@@ -43,14 +44,17 @@
          	   			</div>
          	   		</div>
          	   </div>
-         	   <button class="but1">1</button>
-         	   <button class="but2">2</button>
-         	   <button class="but3">3</button>
-         	   <button class="but4">4</button>
-         	   <button class="but5">5</button>
+	</div>
+</div>
+	<div style="text-align: center; ">
+		<button class="but1">1</button>
+		<button class="but2">2</button>
+		<button class="but3">3</button>
+		<button class="but4">4</button>
+		<button class="but5">5</button>
+	</div>
 
-
-<div class="footer">
+	<div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
 <script>
