@@ -86,11 +86,11 @@ function validDate() {
 
 function changeDate(obj) {
 	
-	var today = new Date(obj.value.substr(0,4),obj.value.substr(5,2),obj.value.substr(8,2));
+	var today = new Date(obj.value.substr(0,4),obj.value.substr(5,2)-1,obj.value.substr(8,2));
 	today.setDate(today.getDate() + 1);
 	today.setHours(today.getHours()+9);
 	
-	var maxDate = new Date(obj.value.substr(0,4),obj.value.substr(5,2),obj.value.substr(8,2));
+	var maxDate = new Date(obj.value.substr(0,4),obj.value.substr(5,2)-1,obj.value.substr(8,2));
 	maxDate.setDate(maxDate.getDate() + 7);
     maxDate.setHours(maxDate.getHours()+9);
 	
