@@ -16,14 +16,18 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/js/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.min.js"></script>
 <script type="text/javascript">
-<c:if test="${sessionScope.member.userId=='admin'}">
-function deleteNotice(num) {
-	if(confirm("게시물을 삭제 하시겠습니까 ?")) {
-		var url="${pageContext.request.contextPath}/notice/delete.do?num="+num+"&${query}";
-		location.href=url;
+function deleteBoard(num) {
+<c:if test="${sessionScope.member.userId=='admin' || sessionScope.member.userId==dto.userId}">
+	if(confirm("게시물을 삭제하시겠습니까 ?")) {
+		var url="${pageContext.request.contextPath}/faq/delete.do";
+		location.href=url+"?${query}&num="+num;
 	}
-}
 </c:if>
+
+<c:if test="${sessionScope.member.userId!='admin' && sessionScope.member.userId!=dto.userId}">
+	alert('게시글을 삭제할수 있는 권한이 없습니다.');
+</c:if>
+}
 </script>
 </head>
 <body>
@@ -35,7 +39,7 @@ function deleteNotice(num) {
 <div class="container">
     <div class="body-container" style="width: 700px;">
         <div class="body-title">
-            <h3><span style="font-family: Webdings">2</span> 공지사항 </h3>
+            <h3><span style="font-family: Webdings">2</span> 자주하는 질문 </h3>
         </div>
         
         <div>
@@ -51,7 +55,7 @@ function deleteNotice(num) {
 			       이름 : ${dto.userName}
 			    </td>
 			    <td width="50%" align="right" style="padding-right: 5px;">
-			        ${dto.created} | 조회 ${dto.hitCount}
+			        ${dto.created } | 조회 ${dto.hitCount}
 			    </td>
 			</tr>
 			
@@ -63,51 +67,36 @@ function deleteNotice(num) {
 			
 			<tr height="35" style="border-bottom: 1px solid #cccccc;">
 			    <td colspan="2" align="left" style="padding-left: 5px;">
-			       첨&nbsp;&nbsp;부 :
-		           <c:if test="${not empty dto.saveFilename}">
-		                   <a href="${pageContext.request.contextPath}/notice/download.do?num=${dto.num}">${dto.originalFilename}</a>
-		                    (<fmt:formatNumber value="${dto.fileSize/1024}" pattern="0.00"/> Kbyte)
-		           </c:if>
-			    </td>
-			</tr>
-
-			<tr height="35" style="border-bottom: 1px solid #cccccc;">
-			    <td colspan="2" align="left" style="padding-left: 5px;">
-			       이전글 :
-			         <c:if test="${not empty preReadDto}">
-			              <a href="${pageContext.request.contextPath}/notice/article.do?${query}&num=${preReadDto.num}">${preReadDto.subject}</a>
-			        </c:if>
+					이전글 :
+					<c:if test="${not empty preReadDto}">
+						<a href="${pageContext.request.contextPath}/faq/article.do?${query}&num=${preReadDto.num}">${preReadDto.subject}</a>
+					</c:if>
 			    </td>
 			</tr>
 			
 			<tr height="35" style="border-bottom: 1px solid #cccccc;">
 			    <td colspan="2" align="left" style="padding-left: 5px;">
-			    다음글 :
-			         <c:if test="${not empty nextReadDto}">
-			              <a href="${pageContext.request.contextPath}/notice/article.do?${query}&num=${nextReadDto.num}">${nextReadDto.subject}</a>
-			        </c:if>
+					다음글 :
+					<c:if test="${not empty nextReadDto}">
+						<a href="${pageContext.request.contextPath}/faq/article.do?${query}&num=${nextReadDto.num}">${nextReadDto.subject}</a>
+					</c:if>
 			    </td>
 			</tr>
-			</table>
-			
-			<table style="width: 100%; margin: 0px auto 20px; border-spacing: 0px;">
 			<tr height="45">
-			    <td width="300" align="left">
-			       <c:if test="${sessionScope.member.userId==dto.userId}">				    
-			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/notice/update.do?num=${dto.num}&page=${page}&rows=${rows}';">수정</button>
-			       </c:if>
-			       <c:if test="${sessionScope.member.userId==dto.userId || sessionScope.member.userId=='admin'}">				    
-			          <button type="button" class="btn" onclick="deleteNotice('${dto.num}');">삭제</button>
-			       </c:if>
+			    <td>
+			          <c:if test="${sessionScope.member.userId==dto.userId}">
+			              <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/faq/update.do?page=${page}&num=${dto.num}';">수정</button>
+			       	  </c:if>
+			          <button type="button" class="btn" onclick="deleteBoard('${dto.num}');">삭제</button>
 			    </td>
 			
 			    <td align="right">
-			        <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/notice/list.do?${query}';">리스트</button>
+			        <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/faq/list.do?${query}';">리스트</button>
 			    </td>
 			</tr>
 			</table>
         </div>
-        
+
     </div>
 </div>
 
