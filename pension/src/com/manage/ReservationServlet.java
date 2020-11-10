@@ -184,5 +184,39 @@ public class ReservationServlet extends MyServlet {
 	}
 	
 	protected void roomArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ReservationDAO dao=new ReservationDAOImpl();
+		MyUtil util=new MyUtil();
+		String cp=req.getContextPath();
+		
+		String page=req.getParameter("page");
+		int current_page=1;
+		if(page!=null) {
+			current_page=Integer.parseInt(page);
+		}
+		
+		int dataCount = 0;
+		int rows=10;
+		dataCount=dao.reservationCount(req.getParameter("roomId"));
+		int total_page=util.pageCount(rows, dataCount);
+		if(current_page>total_page) 
+			current_page=total_page;
+		// 일단 실행해봐
+		int offset=(current_page-1)*rows;
+		if(offset<0)
+			offset=0;
+		
+		List<ReservationDTO> list=dao.listRaservation(req.getParameter("roomId"));
+		
+		
+		String listUrl=cp+"/manage/roomList.do";
+		String paging=util.paging(current_page, total_page, listUrl);
+		
+		req.setAttribute("list", list);
+		req.setAttribute("dataCount", dataCount);
+		req.setAttribute("total_page", total_page);
+		req.setAttribute("page", current_page);
+		req.setAttribute("paging", paging);
+	
+		forward(req, resp, "/WEB-INF/views/manage/roomArticle.jsp");
 	}
 }

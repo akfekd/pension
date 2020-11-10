@@ -70,7 +70,7 @@
 			 <c:forEach var="dto" items="${list}">
 			  <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <td style="padding-left: 10px;">
-			           <a href="#">${dto.roomName }</a>
+			           <a href="#">${dto.roomId }</a>
 			      </td>
 			      <td></td>
 			      <td></td>
