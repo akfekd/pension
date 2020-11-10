@@ -146,6 +146,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return result;
 	}
 
+	
 	@Override
 	public int deleteReservation(int rsvtNum, String userId) throws SQLException {
 		int result=0;
@@ -153,11 +154,13 @@ public class ReservationDAOImpl implements ReservationDAO{
 		String sql;
 		
 		try {
+			
 			sql="DELETE FROM reservation WHERE rsvtNum=? AND userId=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, rsvtNum);
 			pstmt.setString(2, userId);
 			result=pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -279,12 +282,17 @@ public class ReservationDAOImpl implements ReservationDAO{
 			while(rs.next()) {
 				ReservationDTO dto=new ReservationDTO();
 				dto.setRsvtNum(rs.getInt("rsvtNum"));
-				dto.setUserId(rs.getString("userId")); // dto.setNum(rs.getInt(1));
-				dto.setRoomId(rs.getString("roomId"));  // dto.setName(rs.getString(2));
+				dto.setUserId(rs.getString("userId"));
+				dto.setRoomId(rs.getString("roomId"));  
 				dto.setRsvtStart(rs.getString("rsvtStart"));
 				dto.setRsvtEnd(rs.getString("rsvtEnd"));
 				dto.setCreated(rs.getString("created"));
 				dto.setGuestNum(rs.getInt("guestNum"));
+				if(rs.getString("rsvtEnd").equals(rs.getString("rsvtStart"))) {
+					dto.setDay((Integer.parseInt(rs.getString("rsvtEnd").replaceAll("\\-", ""))+1)-Integer.parseInt(rs.getString("rsvtStart").replaceAll("\\-", "")));
+				}else {
+					dto.setDay(Integer.parseInt(rs.getString("rsvtEnd").replaceAll("\\-", ""))-Integer.parseInt(rs.getString("rsvtStart").replaceAll("\\-", "")));
+				}
 				list.add(dto);
 			}
 			
@@ -307,5 +315,6 @@ public class ReservationDAOImpl implements ReservationDAO{
 		}
 		return list;
 	}
+
 
 }
