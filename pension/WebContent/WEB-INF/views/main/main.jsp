@@ -44,7 +44,7 @@
     <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 </div>
 	
-<div class="body-container" style="width: 700px;">
+<div class="body-container" style="width:700px ">
         <div style="padding-top: 15px;">
          	   <div style="overflow:hidden">
          	   		<div class="section">
