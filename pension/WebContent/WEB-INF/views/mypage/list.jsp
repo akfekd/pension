@@ -47,10 +47,10 @@
 			</table>
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
-			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
-			      <th width="60" style="color: #787878;">예약번호</th>
-			      <th style="color: #787878;">방이름</th>
-			      <th style="color: #787878;">인원수</th>
+			  <tr align="center" bgcolor="#B7F0B1" height="50" style="border: 1px solid #cccccc;"> 
+			      <th width="100" style="color: #787878;">예약번호</th>
+			      <th width="100" style="color: #787878;">방이름</th>
+			      <th width="100" style="color: #787878;">인원수</th>
 			      <th width="100" style="color: #787878;">입실일</th>
 			      <th width="100" style="color: #787878;">퇴실일</th>
 			      <th width="100" style="color: #787878;">예약일</th>
