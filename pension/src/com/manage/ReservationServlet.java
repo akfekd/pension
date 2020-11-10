@@ -148,18 +148,16 @@ public class ReservationServlet extends MyServlet {
 	protected void deleteRsvt(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ReservationDAO dao=new ReservationDAOImpl();
 		String cp=req.getContextPath();
-		HttpSession session=req.getSession();
-		SessionInfo info=(SessionInfo)session.getAttribute("member");
 
 		try {
-				if(info.getUserId().equals("admin")) {
-					int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
-					String userId=info.getUserId();
-					dao.deleteReservation(rsvtNum, userId);
-				}else {
+				//if(info.getUserId().equals("admin")) {
+				//	int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+				String userId=req.getParameter("userId");
+				//	dao.deleteReservation(rsvtNum, userId);
+				//}else {
 				int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
-				dao.deleteReservation(rsvtNum, info.getUserId());
-				}
+				dao.deleteReservation(rsvtNum, userId);
+				
 		
 			
 		} catch (Exception e) {

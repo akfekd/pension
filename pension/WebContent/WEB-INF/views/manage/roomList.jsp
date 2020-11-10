@@ -50,9 +50,9 @@
 			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
 			      <th width="150" style="color: #787878;">방이름</th>
 			      <th width="150" style="color: #787878;">정보</th>
-			      <th width="100" style="color: #787878;">요금</th>
+			      <th width="100" style="color: #787878;">1빅 요금</th>
 			      <th width="100" style="color: #787878;">개시일</th>
-			      <th width="100" style="color: #787878;">조회수</th>
+			      
 			  </tr>
 			 
 			 <c:forEach var="dto" items="${list}">
@@ -63,7 +63,7 @@
 			      <td>${dto.ment}</td>
 			      <td>${dto.price}</td>
 			      <td>${dto.created}</td>
-			      <td>${dto.content}</td>
+			      
 			  </tr>
 			 </c:forEach>
 
