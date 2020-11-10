@@ -19,7 +19,7 @@
 function deleteBoard(rsvtNum) {
 <c:if test="${sessionScope.member.userId=='admin' || sessionScope.member.userId==dto.userId}">
 	if(confirm("게시물을 삭제하시겠습니까 ?")) {
-		var url="${pageContext.request.contextPath}/mypage/delete.do";
+		var url="${pageContext.request.contextPath}/manage/delete.do";
 		location.href=url+"?&rsvtNum="+rsvtNum;
 	}
 </c:if>
@@ -74,7 +74,7 @@ function deleteBoard(rsvtNum) {
 			    </td>
 			
 			    <td align="right">
-			        <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/mypage/list.do?${query}';">리스트</button>
+			        <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/manage/list.do';">리스트</button>
 			    </td>
 			</tr>
 			</table>

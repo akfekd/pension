@@ -20,16 +20,16 @@
 		var f=document.searchForm;
 		f.submit();
 	}
-	function deleteMember(userId) {
-		<c:if test="${sessionScope.member.userId=='admin'}">
-			if(confirm("게시물을 삭제하시겠습니까 ?")) {
-				var url="${pageContext.request.contextPath}/member/delete.do";
-				location.href=url+"?&userId="+userId;
+	function deleteRaservation(rsvtNum, userId) {
+		<c:if test="${sessionScope.member.userId=='admin' || sessionScope.member.userId==dto.userId}">
+			if(confirm("예약을 취소하시겠습니까 ?")) {
+				var url="${pageContext.request.contextPath}/manage/delete_rsvt.do";
+				location.href=url+"?rsvtNum="+rsvtNum+"&userId="+userId;
 			}
 		</c:if>
 
 		<c:if test="${sessionScope.member.userId!='admin' && sessionScope.member.userId!=dto.userId}">
-			alert('게시글을 삭제할수 있는 권한이 없습니다.');
+			alert('예약을을 취소할 수 있는 권한이 없습니다.');
 		</c:if>
 		}
 </script>
@@ -60,22 +60,28 @@
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
 			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
-			      <th width="200" style="color: #787878;">방이름</th>
-			      <th style="color: #787878;">정보</th>
+			      <th width="150" style="color: #787878;">방이름</th>
+			      <th width="100" style="color: #787878;">인원수</th>
+			      <th width="150" style="color: #787878;">입실일</th>
+			      <th width="100" style="color: #787878;">퇴실일</th>
+			      <th width="100" style="color: #787878;">예약일</th>
 			      <th width="100" style="color: #787878;">요금</th>
-			      <th width="100" style="color: #787878;">개시일</th>
-			      <th width="100" style="color: #787878;">조회수</th>
+			      <th width="100" style="color: #787878;">예약취소</th>
 			  </tr>
 			 
 			 <c:forEach var="dto" items="${list}">
 			  <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <td style="padding-left: 10px;">
-			           <a href="#">${dto.roomId }</a>
+			          ${dto.roomId }
 			      </td>
-			      <td></td>
-			      <td></td>
-			      <td></td>
-			      <td></td>
+			      <td>${dto.guestNum}</td>
+			      <td>${dto.rsvtStart}</td>
+			      <td>${dto.rsvtEnd}</td>
+			      <td>${dto.created}</td>
+			      <td>${dto.day}</td>
+			      <td>
+			          <button type="button" class="btn" onclick="deleteRaservation('${dto.rsvtNum}','${dto.userId}');">예약취소</button>
+			    </td>
 			  </tr>
 			 </c:forEach>
 
@@ -92,18 +98,9 @@
 			<table style="width: 100%; margin: 10px auto; border-spacing: 0px;">
 			   <tr height="40">
 			      <td align="left" width="100">
-			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/member/list.do';">새로고침</button>
+			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/manage/roomList.do';">새로고침</button>
 			      </td>
-			      <td align="center">
-			          <form name="searchForm" action="${pageContext.request.contextPath}/member/list.do" method="post">
-			              <select name="condition" class="selectField">
-			                  <option value="userId" ${condition=="userId"?"selected='selected'":""}>아이디</option>
-			                  <option value="userName"  ${condition=="userName"?"selected='selected'":""}>이름</option>
-			            </select>
-			            <input type="text" name="keyword" class="boxTF" value="${keyword}">
-			            <button type="button" class="btn" onclick="searchList()">검색</button>
-			        </form>
-			      </td>
+			      
 			   </tr>
 			</table>
         </div>

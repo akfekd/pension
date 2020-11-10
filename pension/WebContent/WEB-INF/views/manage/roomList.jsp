@@ -48,11 +48,11 @@
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
 			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
-			      <th width="200" style="color: #787878;">방이름</th>
-			      <th style="color: #787878;">정보</th>
-			      <th width="100" style="color: #787878;">요금</th>
+			      <th width="150" style="color: #787878;">방이름</th>
+			      <th width="150" style="color: #787878;">정보</th>
+			      <th width="100" style="color: #787878;">1빅 요금</th>
 			      <th width="100" style="color: #787878;">개시일</th>
-			      <th width="100" style="color: #787878;">조회수</th>
+			      
 			  </tr>
 			 
 			 <c:forEach var="dto" items="${list}">
@@ -63,7 +63,7 @@
 			      <td>${dto.ment}</td>
 			      <td>${dto.price}</td>
 			      <td>${dto.created}</td>
-			      <td>${dto.content}</td>
+			      
 			  </tr>
 			 </c:forEach>
 
@@ -80,7 +80,7 @@
 			<table style="width: 100%; margin: 10px auto; border-spacing: 0px;">
 			   <tr height="40">
 			      <td align="left" width="100">
-			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/bbs/list.do';">새로고침</button>
+			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/manage/roomList.do';">새로고침</button>
 			      </td>
 			      <td align="center">
 			          <form name="searchForm" action="${pageContext.request.contextPath}/bbs/list.do" method="post">
@@ -94,9 +94,6 @@
 			            <input type="text" name="keyword" class="boxTF" value="${keyword}">
 			            <button type="button" class="btn" onclick="searchList()">검색</button>
 			        </form>
-			      </td>
-			      <td align="right" width="100">
-			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/bbs/created.do';">글올리기</button>
 			      </td>
 			   </tr>
 			</table>

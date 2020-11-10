@@ -8,6 +8,7 @@ public class ReservationDTO {
 	private String rsvtEnd;
 	private String created;
 	private int guestNum ,listNum;
+	private int day;
 	
 	
 	public int getListNum() {
@@ -58,6 +59,12 @@ public class ReservationDTO {
 	}
 	public void setRsvtNum(int rsvtNum) {
 		this.rsvtNum = rsvtNum;
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
 	}
 	
 	

@@ -53,8 +53,7 @@
 		<button class="but4">4</button>
 		<button class="but5">5</button>
 	</div>
-
-	<div class="footer">
+<div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
 <script>
@@ -74,6 +73,7 @@
 		document.querySelector('.section').style.transform = 'translate(-400vw)';
 	})
 </script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.ui.datepicker-ko.js"></script>
 </body>
