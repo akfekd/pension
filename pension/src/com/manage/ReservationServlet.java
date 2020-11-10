@@ -38,6 +38,8 @@ public class ReservationServlet extends MyServlet {
 			article(req, resp);
 		}else if(uri.indexOf("delete.do")!=-1) {
 			delete(req, resp);
+		}else if(uri.indexOf("delete_rsvt.do")!=-1) {
+			deleteRsvt(req, resp);
 		}else if(uri.indexOf("roomList.do")!=-1) {
 			roomList(req, resp);
 		}else if(uri.indexOf("roomArticle.do")!=-1) {
@@ -80,8 +82,8 @@ public class ReservationServlet extends MyServlet {
 			n++;
 		}
 		
-		String listUrl=cp+"/mypage/list.do";
-		String articleUrl=cp+"/mypage/article.do";
+		String listUrl=cp+"/manage/list.do";
+		String articleUrl=cp+"/manage/article.do";
 		String paging=util.paging(current_page, total_page, listUrl);
 		
 		// /WEB-INF/views/notice/list.jsp에 넘겨줄 데이터
@@ -131,16 +133,38 @@ public class ReservationServlet extends MyServlet {
 		SessionInfo info=(SessionInfo)session.getAttribute("member");
 
 		try {
-			int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
-			dao.deleteReservation(rsvtNum, info.getUserId());
-			
+				
+				int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+				dao.deleteReservation(rsvtNum, info.getUserId());
+				
 		
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect(cp+"/mypage/list.do");
+		resp.sendRedirect(cp+"/manage/list.do");
+	}
+	protected void deleteRsvt(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ReservationDAO dao=new ReservationDAOImpl();
+		String cp=req.getContextPath();
+
+		try {
+				//if(info.getUserId().equals("admin")) {
+				//	int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+				String userId=req.getParameter("userId");
+				//	dao.deleteReservation(rsvtNum, userId);
+				//}else {
+				int rsvtNum=Integer.parseInt(req.getParameter("rsvtNum"));
+				dao.deleteReservation(rsvtNum, userId);
+				
+		
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		resp.sendRedirect(cp+"/manage/roomList.do");
 	}
 	
 	protected void roomList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -57,17 +57,39 @@ function infoReserve(roomId, roomName, guestnum, price) {
 function reserveOk() {
 	var f = document.reserveForm;
 	
+	
 	f.action="${pageContext.request.contextPath}/reserve/${mode}_ok.do";
 	
 	f.submit();
 	
 }
 
+function getInputDateFormat(date) {
+    return date.toISOString().split('T')[0];
+}
+
+function validDate() {
+	
+	var f = document.reserveForm;
+	
+    var today = new Date();
+    
+    var maxDate = new Date();
+    maxDate.setDate(maxDate.getDate() + 7);
+
+
+    document.getElementsByName("rsvtStart")[0].setAttribute('min', getInputDateFormat(today));
+    document.getElementsByName("rsvtStart")[0].setAttribute('max', getInputDateFormat(maxDate));
+    document.getElementsByName("rsvtEnd")[0].setAttribute('min', getInputDateFormat(today));
+    document.getElementsByName("rsvtEnd")[0].setAttribute('max', getInputDateFormat(maxDate));
+}
+
+
 </script>
 
 
 </head>
-<body>
+<body onload="validDate()">
 
 <!-- 헤더 부분 시작 -->
 <div class="header">
@@ -83,7 +105,7 @@ function reserveOk() {
     
     <p> 원하는 방을 골라주세요. </p>
     
-    <div>
+    <div>	
     	<table style="width: 700px; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse;">
     	<c:forEach var="dto" items="${listRoom}" varStatus="status">
     		<c:if test="${status.index==0}">
@@ -106,13 +128,11 @@ function reserveOk() {
 				</td>
 			</c:forEach>
 		</c:if>
+		
     	</table>
     
     
     </div>
-    
-    
-    
     
     
 		<form name="reserveForm" method="post">
@@ -148,9 +168,26 @@ function reserveOk() {
 				</tr>
 			</table>
 			
+			
+			
+			
+     <div class="form-group">
+       <p>Date<span>*</span></p>
+       <input type="date" name="date" id="date" class="form-control input-sm " required />
+     </div>
+             
+             
+             
+             
+             
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
 		</form>
 	</div>
 </div>
+
+
+
+
+
 </body>
 </html>

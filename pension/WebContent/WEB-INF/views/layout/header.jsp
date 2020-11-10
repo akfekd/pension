@@ -33,14 +33,12 @@ $(function(){
                 <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
                     &nbsp;|&nbsp;
                 <a href="${pageContext.request.contextPath}/member/member.do">회원가입</a>
+           		<a href="${pageContext.request.contextPath}">정보수정</a>
             </c:if>
             <c:if test="${not empty sessionScope.member}">
                 <span style="color:blue;">${sessionScope.member.userName}</span>님
                     &nbsp;|&nbsp;
                     <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-                    &nbsp;|&nbsp;
-                    <a href="${pageContext.request.contextPath}">정보수정</a>
-   
             </c:if>
         </div>
     </div>
@@ -95,7 +93,7 @@ $(function(){
         <li>
             <a href="#">마이페이지</a>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/mypage/list.do">정보확인</a></li>
+                <li><a href="${pageContext.request.contextPath}/manage/list.do">정보확인</a></li>
             </ul>
         </li>
         </c:if>
@@ -117,5 +115,4 @@ $(function(){
 </div>
 
 <div class="navigation">
-	<div class="nav-bar">홈 &gt; 회사소개</div>
 </div>

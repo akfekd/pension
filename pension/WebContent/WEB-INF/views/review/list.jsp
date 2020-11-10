@@ -28,22 +28,9 @@
 }
 
 .selectroom {
-	text-align: right;
+	text-align: center;
 	margin: 10px;
 	padding: 10px;
-}
-
-.selectbtn {
-	border: 0;
-	padding: 5px;
-	border-radius: 5px;
-	background: white;
-}
-
-.selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
-	border: 1px solid #6FA869;
-	background: white;
-	outline: none;
 }
 
 .starLayout {
@@ -53,14 +40,14 @@
 .selectbtn {
 	border: 0;
 	padding: 5px;
-	border-radius: 5px;
 	background: white;
 }
 
 .selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
-	border: 1px solid #6FA869;
+	border-bottom: 1px solid #6FA869;
 	background: white;
 	outline: none;
+	font-weight: bold;
 }
 
 .reviewheader {
@@ -78,6 +65,11 @@ function deleteReview(rsvtNum) {
 		location.href=url;
 	}
 }
+
+function searchList(value) {
+	var f=document.searchForm;
+	f.submit();
+}
 </script>
 </head>
 <body>
@@ -89,7 +81,6 @@ function deleteReview(rsvtNum) {
 <div class="container">
     <div class="body-container" style="width: 1000px;">
 	<div class="body-title">
-		 <h3><span style="font-family: Webdings">2</span>&nbsp;Review </h3>
 		 <form name="searchForm" class="selectroom">
         		<button value="all" type="submit" class="selectbtn" onclick="${pageContext.request.contextPath}/roominfo/list.do">전체보기</button>
         		<button name="keyword" value="cab" type="submit" class="selectbtn" onclick="searchList('${value}')">카바나</button>
@@ -102,7 +93,7 @@ function deleteReview(rsvtNum) {
 <c:forEach var="dto" items="${list}">
 	<table class="reviewLayout" style="border-collapse: collapse; border-spacing: 0;">
 
-		<tr class="reviewheader" height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
+		<tr class="reviewheader" height="40" style="border-radius: 10px;">
 			<td style="padding-left: 10px; font-weight: bold; width: 8%">${dto.roomName}</td>
 			<td class="starLayout" style="width: 8%">			
 			<c:if test="${dto.star==1}">★</c:if>			
