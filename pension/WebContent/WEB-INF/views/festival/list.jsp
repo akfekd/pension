@@ -31,7 +31,7 @@
 <div class="container">
     <div class="body-container" style="width: 700px;">
         <div class="body-title">
-            <h3><span style="font-family: Webdings">2</span> 주변 축제 정보 </h3>
+            <h3><span style="font-family: Webdings">2</span> <span style="color:#6799FF;">주변</span><span style="color: #FFC19E;">축제</span><span style="color: #AEC184">정보</span></h3>
         </div>
         
         <div>
@@ -46,7 +46,7 @@
 			   </tr>
 			</table>
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
-			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
+			  <tr align="center" bgcolor="#E4F7BA" height="35" style="border-top: 1px solid #E4F7BA; border-bottom: 1px solid #E4F7BA;"> 
 			      <th width="60" style="color: #787878;">번호</th>
 			      <th style="color: #787878;">제목</th>
 			      <th width="100" style="color: #787878;">작성자</th>
@@ -104,6 +104,24 @@
         </div>
 
     </div>
+</div>
+<div>
+	
+		<c:forEach var="dto" items="${list2}">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <td>${dto.listNum}</td>
+			      <td align="left" style="padding-left: 10px;">
+			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+			      		<c:if test="${dto.gap<1}">
+			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
+			      		</c:if>
+			      </td>
+			      <td>${dto.userName}</td>
+			      <td>${dto.created}</td>
+			      <td>${dto.hitCount}</td>
+			  </tr>
+		</c:forEach>
+	
 </div>
 
 <div class="footer">
