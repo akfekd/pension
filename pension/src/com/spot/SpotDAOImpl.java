@@ -536,4 +536,56 @@ public class SpotDAOImpl implements SpotDAO {
 
 	}
 
+	@Override
+	public List<SpotDTO> listCount() {
+		List<SpotDTO> list3 = new ArrayList<SpotDTO>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StringBuilder sb= new StringBuilder();
+		
+		try {
+			sb.append("   SELECT num, userName, subject, ");
+			sb.append("   content, r.created, hitCount, imageFilename");
+			sb.append("   FROM spot r ");
+			sb.append("   JOIN member1 m ");
+			sb.append("   ON r.userId = m.userId ");
+			sb.append("   ORDER BY num DESC ");
+			sb.append("   FETCH FIRST 3 ROWS ONLY ");
+			
+			pstmt = conn.prepareStatement(sb.toString());
+			
+			
+	        rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            SpotDTO dto = new SpotDTO();
+	            dto.setNum(rs.getInt("num"));
+	            dto.setUserName(rs.getString("userName"));
+	            dto.setSubject(rs.getString("subject"));
+	            dto.setContent(rs.getString("content"));
+	            dto.setCreated(rs.getString("created"));
+	            dto.setHitCount(rs.getInt("hitCount"));
+	            dto.setImageFilename(rs.getNString("imageFilename"));
+	            
+	            list3.add(dto);
+	         }  
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+	         if (rs != null) {
+	             try {
+	                rs.close();
+	             } catch (Exception e2) {
+	             }
+	          }
+	          if (pstmt != null) {
+	             try {
+	                pstmt.close();
+	             } catch (Exception e2) {
+	             }
+	          }
+	       }
+	       return list3;
+	}
+	
+	
 }

@@ -13,6 +13,7 @@ public interface RestaurantDAO {
 	public int dataCount();
 	public int dataCount(String condition, String keyword);
 	
+	public List<RestaurantDTO> listCount();
 	public List<RestaurantDTO> listRestaurant(int offset, int rows);
 	public List<RestaurantDTO> listRestaurant(int offset, int rows, String condition, String keyword);
 

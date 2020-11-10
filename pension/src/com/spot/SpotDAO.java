@@ -13,6 +13,7 @@ public interface SpotDAO {
 	public int dataCount();
 	public int dataCount(String condition, String keyword);
 	
+	public List<SpotDTO> listCount();
 	public List<SpotDTO> listSpot(int offset, int rows);
 	public List<SpotDTO> listSpot(int offset, int rows, String condition, String keyword);
 

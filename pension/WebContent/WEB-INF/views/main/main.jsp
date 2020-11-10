@@ -8,6 +8,30 @@
 <head>
 <meta charset="UTF-8">
 <title>하늘숲 글램핑 파크</title>
+<style type="text/css">
+.a-box{
+	position: relative;
+	left: 50px; top: 20px;
+		background: #333; color: #CEF279;
+	font-weight: bold; text-align: center;
+	line-height: 150px;
+}
+.b-box{
+	position: relative;
+	left: 50px; top: -2000px;
+		background: #333; color: #CEF279;
+	font-weight: bold; text-align: center;
+	line-height: 150px;
+}
+.c-box{
+	position: relative;
+	left: 50px; top: -400px;
+		background: #333; color: #CEF279;
+	font-weight: bold; text-align: center;
+	line-height: 150px;
+}
+
+</style>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/layout.css" type="text/css">
@@ -53,6 +77,55 @@
 		<button class="but4">4</button>
 		<button class="but5">5</button>
 	</div>
+
+<div class="a-box">	
+		<c:forEach var="dto" items="${list2}">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <td>${dto.listNum}</td>
+			      <td align="left" style="padding-left: 10px;">
+			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+			      		<c:if test="${dto.gap<1}">
+			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
+			      		</c:if>
+			      </td>
+			      <td>${dto.userName}</td>
+			      <td>${dto.created}</td>
+			      <td>${dto.hitCount}</td>
+			  </tr>
+		</c:forEach>
+</div>	
+<div class="a-box">
+		<c:forEach var="dto" items="${list3}">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <td>${dto.listNum}</td>
+			      <td align="left" style="padding-left: 10px;">
+			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+			      		<c:if test="${dto.gap<1}">
+			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
+			      		</c:if>
+			      </td>
+			      <td>${dto.userName}</td>
+			      <td>${dto.created}</td>
+			      <td>${dto.hitCount}</td>
+			  </tr>
+		</c:forEach>
+</div>				
+<div class="a-box">
+		<c:forEach var="dto" items="${list4}">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <td>${dto.listNum}</td>
+			      <td align="left" style="padding-left: 10px;">
+			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+			      		<c:if test="${dto.gap<1}">
+			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
+			      		</c:if>
+			      </td>
+			      <td>${dto.userName}</td>
+			      <td>${dto.created}</td>
+			      <td>${dto.hitCount}</td>
+			  </tr>
+		</c:forEach>
+</div>
 <div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
