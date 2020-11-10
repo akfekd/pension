@@ -11,22 +11,19 @@
 <style type="text/css">
 .a-box{
 	position: relative;
-	left: 50px; top: 20px;
-		background: #333; color: #CEF279;
+	left: 50px; top: 20px;	
 	font-weight: bold; text-align: center;
 	line-height: 150px;
 }
 .b-box{
 	position: relative;
-	left: 50px; top: -2000px;
-		background: #333; color: #CEF279;
+	left: 50px; top: -2000px;	
 	font-weight: bold; text-align: center;
 	line-height: 150px;
 }
 .c-box{
 	position: relative;
 	left: 50px; top: -400px;
-		background: #333; color: #CEF279;
 	font-weight: bold; text-align: center;
 	line-height: 150px;
 }
@@ -78,9 +75,16 @@
 		<button class="but5">5</button>
 	</div>
 
-<div class="a-box">	
+<table class="a-box">	
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;">
+			      <th width="60" style="color: #787878;">번호</th>
+			      <th style="color: #787878;">제목</th>
+			      <th width="100" style="color: #787878;">작성자</th>
+			      <th width="80" style="color: #787878;">작성일</th>
+			      <th width="60" style="color: #787878;">조회수</th>
+			 </tr>
 		<c:forEach var="dto" items="${list2}">
-			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			<tr> 
 			      <td>${dto.listNum}</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
@@ -89,14 +93,21 @@
 			      		</c:if>
 			      </td>
 			      <td>${dto.userName}</td>
-			      <td>${dto.created}</td>
+			      <td>${dto.getCreated().substring(0,10)}</td>
 			      <td>${dto.hitCount}</td>
 			  </tr>
 		</c:forEach>
-</div>	
-<div class="a-box">
+</table>	
+<table class="a-box">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <th width="60" style="color: #787878;">번호</th>
+			      <th style="color: #787878;">제목</th>
+			      <th width="100" style="color: #787878;">작성자</th>
+			      <th width="80" style="color: #787878;">작성일</th>
+			      <th width="60" style="color: #787878;">조회수</th>
+			</tr>
 		<c:forEach var="dto" items="${list3}">
-			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			<tr> 
 			      <td>${dto.listNum}</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
@@ -105,14 +116,21 @@
 			      		</c:if>
 			      </td>
 			      <td>${dto.userName}</td>
-			      <td>${dto.created}</td>
+			      <td>${dto.getCreated().substring(0,10)}</td>
 			      <td>${dto.hitCount}</td>
 			  </tr>
 		</c:forEach>
-</div>				
-<div class="a-box">
+</table>				
+<table class="a-box">
+			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			      <th width="60" style="color: #787878;">번호</th>
+			      <th style="color: #787878;">제목</th>
+			      <th width="100" style="color: #787878;">작성자</th>
+			      <th width="80" style="color: #787878;">작성일</th>
+			      <th width="60" style="color: #787878;">조회수</th>
+			</tr>
 		<c:forEach var="dto" items="${list4}">
-			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
+			<tr> 
 			      <td>${dto.listNum}</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
@@ -121,11 +139,11 @@
 			      		</c:if>
 			      </td>
 			      <td>${dto.userName}</td>
-			      <td>${dto.created}</td>
+			      <td>${dto.getCreated().substring(0,10)}</td>
 			      <td>${dto.hitCount}</td>
-			  </tr>
+			 </tr>
 		</c:forEach>
-</div>
+</table>
 <div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
