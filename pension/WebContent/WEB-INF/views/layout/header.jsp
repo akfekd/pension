@@ -33,13 +33,15 @@ $(function(){
                 <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
                     &nbsp;|&nbsp;
                 <a href="${pageContext.request.contextPath}/member/member.do">회원가입</a>
-           		<a href="${pageContext.request.contextPath}">정보수정</a>
             </c:if>
             <c:if test="${not empty sessionScope.member}">
                 <span style="color:blue;">${sessionScope.member.userName}</span>님
                     &nbsp;|&nbsp;
                     <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+           	
+           		<a href="${pageContext.request.contextPath}/member/update.do">정보수정</a>
             </c:if>
+           		
         </div>
     </div>
 </div>

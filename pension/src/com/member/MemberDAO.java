@@ -129,6 +129,34 @@ public class MemberDAO {
 
   }
    
+   public int updatemember(MemberDTO dto) throws SQLException {
+	   int result=0;
+		PreparedStatement pstmt=null;
+		String sql;
+		
+		try {
+			sql="UPDATE member1 SET userId=?, userName=?, userPwd=?, tel=? WHERE userId=?";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getUserId());
+			pstmt.setString(2, dto.getUserName());
+			pstmt.setString(3, dto.getUserPwd());
+			pstmt.setString(4, dto.getTel());
+			pstmt.setString(5, dto.getUserId());
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(pstmt!=null) {
+				pstmt.close();
+			}
+		}
+		
+		return result;
+   }
+   
    public List<MemberDTO> listMembe() {
 	   List<MemberDTO> list=new ArrayList<MemberDTO>();
 	   PreparedStatement pstmt=null;
