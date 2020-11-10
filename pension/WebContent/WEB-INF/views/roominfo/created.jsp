@@ -106,7 +106,7 @@
 			      <td width="100" bgcolor="#eeeeee" style="text-align: center;">코드</td>
 			      <td style="padding-left:10px;"> 
 			          <input type="text" name="roomId" maxlength="100" class="boxTF" style="width: 20%;" value="${dto.roomId}" 
-			          ${mode=="update" ? "readonly='readonly' ":""} >
+			          ${mode=="update" ? "readonly='readonly' ":""} > (카바나:cab/오페라:ope/패밀리:fam)
 			      </td>
 			  </tr>
 			  
