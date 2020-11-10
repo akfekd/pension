@@ -537,7 +537,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> listCount(int offset, int rows) {
+	public List<BoardDTO> listCount() {
 		List<BoardDTO> list2 = new ArrayList<BoardDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -550,11 +550,11 @@ public class BoardDAOImpl implements BoardDAO {
 			sb.append("   JOIN member1 m ");
 			sb.append("   ON f.userId = m.userId ");
 			sb.append("   ORDER BY hitCount DESC ");
+			sb.append(" FETCH  FIRST  3  ROWS  ONLY ");
 			
 			
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setInt(1, offset);
-            pstmt.setInt(2, rows);
+			
 			
 			
 	        rs = pstmt.executeQuery();

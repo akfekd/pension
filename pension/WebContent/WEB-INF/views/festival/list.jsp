@@ -106,7 +106,7 @@
     </div>
 </div>
 <div>
-	<c:forEach var="dto" begin="1" end="3">
+	
 		<c:forEach var="dto" items="${list2}">
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <td>${dto.listNum}</td>
@@ -121,7 +121,7 @@
 			      <td>${dto.hitCount}</td>
 			  </tr>
 		</c:forEach>
-	</c:forEach>
+	
 </div>
 
 <div class="footer">

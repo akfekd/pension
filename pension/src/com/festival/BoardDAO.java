@@ -12,7 +12,7 @@ public interface BoardDAO {
 	public int dataCount(String condition, String keyword);
 	
 	public List<BoardDTO> listBoard(int offset, int rows);
-	public List<BoardDTO> listCount(int offset, int rows);
+	public List<BoardDTO> listCount();
 	public List<BoardDTO> listBoard(int offset, int rows, String condition, String keyword);
 
 	public int updateHitcount(int num);
