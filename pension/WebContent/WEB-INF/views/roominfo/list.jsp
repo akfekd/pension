@@ -76,7 +76,7 @@ p {
 }
 
 .selectroom {
-	text-align: right;
+	text-align: center;
 	margin: 10px;
 	padding: 10px;
 }
@@ -84,14 +84,14 @@ p {
 .selectbtn {
 	border: 0;
 	padding: 5px;
-	border-radius: 5px;
 	background: white;
 }
 
 .selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
-	border: 1px solid #6FA869;
+	border-bottom : 1px solid #6FA869;
 	background: white;
 	outline: none;
+	font-weight: bold;
 }
 
 </style>

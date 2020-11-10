@@ -28,22 +28,9 @@
 }
 
 .selectroom {
-	text-align: right;
+	text-align: center;
 	margin: 10px;
 	padding: 10px;
-}
-
-.selectbtn {
-	border: 0;
-	padding: 5px;
-	border-radius: 5px;
-	background: white;
-}
-
-.selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
-	border: 1px solid #6FA869;
-	background: white;
-	outline: none;
 }
 
 .starLayout {
@@ -53,14 +40,14 @@
 .selectbtn {
 	border: 0;
 	padding: 5px;
-	border-radius: 5px;
 	background: white;
 }
 
 .selectbtn:active, .selectbtn:hover,  .selectbtn:focus {
-	border: 1px solid #6FA869;
+	border-bottom: 1px solid #6FA869;
 	background: white;
 	outline: none;
+	font-weight: bold;
 }
 
 .reviewheader {
@@ -77,6 +64,11 @@ function deleteReview(rsvtNum) {
 		var url="${pageContext.request.contextPath}/review/delete.do?page=${page}&rsvtNum="+rsvtNum;
 		location.href=url;
 	}
+}
+
+function searchList(value) {
+	var f=document.searchForm;
+	f.submit();
 }
 </script>
 </head>
@@ -101,7 +93,7 @@ function deleteReview(rsvtNum) {
 <c:forEach var="dto" items="${list}">
 	<table class="reviewLayout" style="border-collapse: collapse; border-spacing: 0;">
 
-		<tr class="reviewheader" height="40" style="border: 1px solid #ccc;" bgcolor="#eee" >
+		<tr class="reviewheader" height="40" style="border-radius: 10px;">
 			<td style="padding-left: 10px; font-weight: bold; width: 8%">${dto.roomName}</td>
 			<td class="starLayout" style="width: 8%">			
 			<c:if test="${dto.star==1}">★</c:if>			
