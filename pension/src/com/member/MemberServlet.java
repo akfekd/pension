@@ -324,17 +324,27 @@ public class MemberServlet extends HttpServlet{
 		// 회원 삭제
 		MemberDAO dao=new MemberDAO();
 		String cp=req.getContextPath();
+		HttpSession session=req.getSession();
+		SessionInfo info=(SessionInfo)session.getAttribute("member");
 
 		try {
+			if(info.getUserId().equals("admin")) {
 			String userId=req.getParameter("userId");
 			dao.deleteMember(userId);
-			
+			}else {
+				String userId=info.getUserId();
+				dao.deleteMember(userId);
+				session.invalidate();
+			}
 			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		if(info.getUserId().equals("admin")) {
 		resp.sendRedirect(cp+"/member/list.do");
+		}else {
+			resp.sendRedirect(cp);
+		}
 	}
 }

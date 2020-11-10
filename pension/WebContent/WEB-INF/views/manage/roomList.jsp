@@ -50,7 +50,7 @@
 			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
 			      <th width="150" style="color: #787878;">방이름</th>
 			      <th width="150" style="color: #787878;">정보</th>
-			      <th width="100" style="color: #787878;">1빅 요금</th>
+			      <th width="100" style="color: #787878;">1박 요금</th>
 			      <th width="100" style="color: #787878;">개시일</th>
 			      
 			  </tr>

@@ -17,6 +17,18 @@ $(function(){
 	        }
 	     });
 });
+function deleteMember(userId) {
+		if(confirm("회원을 탈퇴하시겠습니까 ?")) {
+			var url="${pageContext.request.contextPath}/member/delete.do";
+			location.href=url+"?&userId="+userId;
+			return;
+		}
+
+	<c:if test="${sessionScope.member.userId!=sessionScope.member.userId}">
+		alert('게시글을 삭제할수 있는 권한이 없습니다.');
+	</c:if>
+	}
+
 </script>
 
 <div class="header-top">
