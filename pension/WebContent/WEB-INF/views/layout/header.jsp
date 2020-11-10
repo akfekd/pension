@@ -97,7 +97,7 @@ $(function(){
             <ul>
                 <li><a href="${pageContext.request.contextPath}/manage/list.do">예약확인</a></li>
                 <li><a href="${pageContext.request.contextPath}/member/update.do">정보수정</a></li>
-                <li><a href="${pageContext.request.contextPath}/member/delete.do">회원탈퇴</a></li>
+                
             </ul>
         </li>
         </c:if>
