@@ -17,6 +17,18 @@ $(function(){
 	        }
 	     });
 });
+function deleteMember(userId) {
+		if(confirm("회원을 탈퇴하시겠습니까 ?")) {
+			var url="${pageContext.request.contextPath}/member/delete.do";
+			location.href=url+"?&userId="+userId;
+			return;
+		}
+
+	<c:if test="${sessionScope.member.userId!=sessionScope.member.userId}">
+		alert('게시글을 삭제할수 있는 권한이 없습니다.');
+	</c:if>
+	}
+
 </script>
 
 <div class="header-top">
@@ -33,13 +45,15 @@ $(function(){
                 <a href="${pageContext.request.contextPath}/member/login.do">로그인</a>
                     &nbsp;|&nbsp;
                 <a href="${pageContext.request.contextPath}/member/member.do">회원가입</a>
-           		<a href="${pageContext.request.contextPath}">정보수정</a>
             </c:if>
             <c:if test="${not empty sessionScope.member}">
                 <span style="color:blue;">${sessionScope.member.userName}</span>님
                     &nbsp;|&nbsp;
                     <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
+           	
+           		<a href="${pageContext.request.contextPath}/member/update.do">정보수정</a>
             </c:if>
+           		
         </div>
     </div>
 </div>
@@ -69,7 +83,7 @@ $(function(){
         <li>
             <a href="#">펜션안내</a>
              <ul>
-                <li><a href="#">찾아오는 길</a></li>
+                <li><a href="${pageContext.request.contextPath}/resource/road/road.jsp">찾아오는 길</a></li>
                 <li><a href="${pageContext.request.contextPath}/photo/list.do">편의시설</a></li>
                 <li><a href="${pageContext.request.contextPath}/notice/list.do">★이용전 필독사항★</a></li> 
                 <li><a href="${pageContext.request.contextPath}/faq/list.do">자주하는 질문</a><li>
@@ -93,7 +107,9 @@ $(function(){
         <li>
             <a href="#">마이페이지</a>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/manage/list.do">정보확인</a></li>
+                <li><a href="${pageContext.request.contextPath}/manage/list.do">예약확인</a></li>
+                <li><a href="${pageContext.request.contextPath}/member/update.do">정보수정</a></li>
+                <li><a href="${pageContext.request.contextPath}/member/delete.do">회원탈퇴</a></li>
             </ul>
         </li>
         </c:if>
@@ -104,7 +120,7 @@ $(function(){
             <ul>
                 <li><a href="${pageContext.request.contextPath}/member/list.do">회원목록</a></li>
                 <li><a href="${pageContext.request.contextPath}/manage/roomList.do">숙소별 예약현황</a></li>
-                <li><a href="#">매출관리</a></li>              
+                          
             </ul>
         </li>
         </c:if>

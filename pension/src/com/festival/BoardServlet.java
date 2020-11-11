@@ -108,8 +108,7 @@ public class BoardServlet  extends MyUploadServlet {
 			offset=0;
 		}
 		
-		List<BoardDTO> list2;
-		list2 = dao.listCount();
+		
 		List<BoardDTO> list;
 		if(keyword.length()==0) {
 			list = dao.listBoard(offset,rows);
@@ -160,7 +159,7 @@ public class BoardServlet  extends MyUploadServlet {
 		req.setAttribute("articleUrl", articleUrl);
 		req.setAttribute("condition", condition);
 		req.setAttribute("keyword", keyword);
-		req.setAttribute("list2", list2);
+		
 	
 		String path = "/WEB-INF/views/festival/list.jsp";
 		forward(req, resp, path);
@@ -359,4 +358,6 @@ public class BoardServlet  extends MyUploadServlet {
 		}
 		resp.sendRedirect(cp+"/festival/list.do?"+query);
 	}
+	
+	
 }

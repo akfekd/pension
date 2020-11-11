@@ -68,23 +68,37 @@ function getInputDateFormat(date) {
     return date.toISOString().split('T')[0];
 }
 
+
 function validDate() {
 	
-	var f = document.reserveForm;
-	
     var today = new Date();
+    today.setDate(today.getDate() + 1);
+    today.setHours(today.getHours()+9);
     
     var maxDate = new Date();
-    maxDate.setDate(maxDate.getDate() + 7);
-
+    maxDate.setDate(maxDate.getDate() + 14);
+    maxDate.setHours(maxDate.getHours()+9);
 
     document.getElementsByName("rsvtStart")[0].setAttribute('min', getInputDateFormat(today));
     document.getElementsByName("rsvtStart")[0].setAttribute('max', getInputDateFormat(maxDate));
-    document.getElementsByName("rsvtEnd")[0].setAttribute('min', getInputDateFormat(today));
-    document.getElementsByName("rsvtEnd")[0].setAttribute('max', getInputDateFormat(maxDate));
+
 }
 
-
+function changeDate(obj) {
+	
+	var today = new Date(obj.value.substr(0,4),obj.value.substr(5,2)-1,obj.value.substr(8,2));
+	today.setDate(today.getDate() + 1);
+	today.setHours(today.getHours()+9);
+	
+	var maxDate = new Date(obj.value.substr(0,4),obj.value.substr(5,2)-1,obj.value.substr(8,2));
+	maxDate.setDate(maxDate.getDate() + 7);
+    maxDate.setHours(maxDate.getHours()+9);
+	
+	document.getElementsByName("rsvtEnd")[0].setAttribute('min', getInputDateFormat(today));
+	document.getElementsByName("rsvtEnd")[0].setAttribute('max', getInputDateFormat(maxDate));
+	
+	$('#rsvtEnd').attr("disabled", false);
+}
 </script>
 
 
@@ -158,8 +172,8 @@ function validDate() {
 				<tr>
 					<td>숙박 예정일</td>
 					<td>
-						<input type="date" name="rsvtStart">-<input type="date" name="rsvtEnd">
-						<button type="button" class="btn" onclick="dateCheck()">날짜확인</button>
+						<input type="date" name="rsvtStart" onchange="changeDate(this)">
+						-<input type="date" id="rsvtEnd" name="rsvtEnd" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
@@ -168,14 +182,6 @@ function validDate() {
 				</tr>
 			</table>
 			
-			
-			
-			
-     <div class="form-group">
-       <p>Date<span>*</span></p>
-       <input type="date" name="date" id="date" class="form-control input-sm " required />
-     </div>
-             
              
              
              

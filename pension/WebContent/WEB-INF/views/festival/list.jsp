@@ -105,24 +105,7 @@
 
     </div>
 </div>
-<div>
-	
-		<c:forEach var="dto" items="${list2}">
-			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
-			      <td>${dto.listNum}</td>
-			      <td align="left" style="padding-left: 10px;">
-			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
-			      		<c:if test="${dto.gap<1}">
-			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
-			      		</c:if>
-			      </td>
-			      <td>${dto.userName}</td>
-			      <td>${dto.created}</td>
-			      <td>${dto.hitCount}</td>
-			  </tr>
-		</c:forEach>
-	
-</div>
+
 
 <div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
