@@ -71,7 +71,11 @@ function reserveOk() {
     var edt = new Date(str2);
     var dateDiff = Math.ceil((edt.getTime()-sdt.getTime())/(1000*3600*24));
 	var multi;
-    multi=f.price.value*dateDiff;
+	
+	var rprice=f.price.value.replace(",","");
+	
+	
+    multi=rprice*dateDiff;
     f.price.value=multi;
     
     
@@ -205,17 +209,17 @@ function changeDate(obj) {
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
 			</div>
 			
+		</form>
+	</div>
+</div>
+
+
 <div class="footer">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.ui.datepicker-ko.js"></script>
-		</form>
-	</div>
-</div>
-
-
 
 
 
