@@ -174,16 +174,16 @@
       document.querySelector('.section').style.transform = 'translate(0vw)';
    })
    document.querySelector(".but2").addEventListener('click',function(){
-      document.querySelector('.section').style.transform = 'translate(-600vw)';
+      document.querySelector('.section').style.transform = 'translate(-600px)';
    })
    document.querySelector(".but3").addEventListener('click',function(){
-      document.querySelector('.section').style.transform = 'translate(-1200vw)';
+      document.querySelector('.section').style.transform = 'translate(-1200px)';
    })
    document.querySelector(".but4").addEventListener('click',function(){
-      document.querySelector('.section').style.transform = 'translate(-1800vw)';
+      document.querySelector('.section').style.transform = 'translate(-1800px)';
    })
    document.querySelector(".but5").addEventListener('click',function(){
-      document.querySelector('.section').style.transform = 'translate(-2400vw)';
+      document.querySelector('.section').style.transform = 'translate(-2400px)';
    })
 </script>
 
