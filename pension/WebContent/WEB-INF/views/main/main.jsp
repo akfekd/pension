@@ -11,21 +11,27 @@
 <style type="text/css">
 .a-box{
 	position: relative;
-	left: 50px; top: 20px;	
+	left: 50px; top: -750px;	
 	font-weight: bold; text-align: center;
-	line-height: 150px;
+	line-height: 65px;
+	border: 1;
+	border-collapse: collapse;
 }
 .b-box{
 	position: relative;
-	left: 50px; top: -2000px;	
+	left: 50px; top: -650px;	
 	font-weight: bold; text-align: center;
-	line-height: 150px;
+	line-height: 65px;
+	border: 1;
+	border-collapse: collapse;
 }
 .c-box{
 	position: relative;
-	left: 50px; top: -400px;
+	left: 1380px; top: -1250px;
 	font-weight: bold; text-align: center;
-	line-height: 150px;
+	line-height: 65px;
+	border: 1;
+	border-collapse: collapse;
 }
 
 </style>
@@ -85,7 +91,7 @@
 			 </tr>
 		<c:forEach var="dto" items="${list2}">
 			<tr> 
-			      <td>${dto.listNum}</td>
+			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
 			      		<c:if test="${dto.gap<1}">
@@ -98,7 +104,7 @@
 			  </tr>
 		</c:forEach>
 </table>	
-<table class="a-box">
+<table class="b-box">
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <th width="60" style="color: #787878;">번호</th>
 			      <th style="color: #787878;">제목</th>
@@ -108,7 +114,7 @@
 			</tr>
 		<c:forEach var="dto" items="${list3}">
 			<tr> 
-			      <td>${dto.listNum}</td>
+			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
 			      		<c:if test="${dto.gap<1}">
@@ -121,7 +127,7 @@
 			  </tr>
 		</c:forEach>
 </table>				
-<table class="a-box">
+<table class="c-box">
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <th width="60" style="color: #787878;">번호</th>
 			      <th style="color: #787878;">제목</th>
@@ -131,7 +137,7 @@
 			</tr>
 		<c:forEach var="dto" items="${list4}">
 			<tr> 
-			      <td>${dto.listNum}</td>
+			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
 			      		<c:if test="${dto.gap<1}">
