@@ -107,8 +107,6 @@ function sendLogin() {
 
 			  <tr align="center" height="45">
 			      <td>
-			       		<a href="${pageContext.request.contextPath}/">아이디찾기</a>&nbsp;&nbsp;&nbsp;
-			       		<a href="${pageContext.request.contextPath}/">패스워드찾기</a>&nbsp;&nbsp;&nbsp;
 			       		<a href="${pageContext.request.contextPath}/member/member.do">회원가입</a>
 			      </td>
 			  </tr>
