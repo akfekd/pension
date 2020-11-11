@@ -33,6 +33,21 @@
 	border: 1;
 	border-collapse: collapse;
 }
+.tag1{
+	position: relative;
+	left: 60px; top: -750px;
+	color: tomato;
+}
+.tag2{
+	position: relative;
+	left: 60px; top: -650px;
+	color: tomato;
+}
+.tag3{
+	position: relative;
+	left: 1380px; top: -1250px;
+	color: tomato;
+}
 
 </style>
 
@@ -73,14 +88,14 @@
          	   </div>
 	</div>
 </div>
-	<div style="text-align: center; ">
+<div style="text-align: center; ">
 		<button class="but1">1</button>
 		<button class="but2">2</button>
 		<button class="but3">3</button>
 		<button class="but4">4</button>
 		<button class="but5">5</button>
-	</div>
-
+</div>
+<h3 class="tag1">주변 축제 인기글!</h3>
 <table class="a-box">	
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;">
 			      <th width="60" style="color: #787878;">번호</th>
@@ -94,16 +109,15 @@
 			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
-			      		<c:if test="${dto.gap<1}">
-			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
-			      		</c:if>
+			      		
 			      </td>
 			      <td>${dto.userName}</td>
 			      <td>${dto.getCreated().substring(0,10)}</td>
 			      <td>${dto.hitCount}</td>
 			  </tr>
 		</c:forEach>
-</table>	
+</table>
+<h3 class="tag2">주변 관광지 인기글!</h3>
 <table class="b-box">
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <th width="60" style="color: #787878;">번호</th>
@@ -117,16 +131,15 @@
 			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
-			      		<c:if test="${dto.gap<1}">
-			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
-			      		</c:if>
+			      		
 			      </td>
 			      <td>${dto.userName}</td>
 			      <td>${dto.getCreated().substring(0,10)}</td>
 			      <td>${dto.hitCount}</td>
 			  </tr>
 		</c:forEach>
-</table>				
+</table>			
+<h3 class="tag3">주변 맛집 인기글!</h3>
 <table class="c-box">
 			<tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <th width="60" style="color: #787878;">번호</th>
@@ -140,9 +153,7 @@
 			      <td style="color: #FF5A5A">HOT</td>
 			      <td align="left" style="padding-left: 10px;">
 			           <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
-			      		<c:if test="${dto.gap<1}">
-			      			<img src="${pageContext.request.contextPath}/resource/images/new.gif">
-			      		</c:if>
+			      		
 			      </td>
 			      <td>${dto.userName}</td>
 			      <td>${dto.getCreated().substring(0,10)}</td>

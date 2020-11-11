@@ -549,7 +549,7 @@ public class SpotDAOImpl implements SpotDAO {
 			sb.append("   FROM spot r ");
 			sb.append("   JOIN member1 m ");
 			sb.append("   ON r.userId = m.userId ");
-			sb.append("   ORDER BY num DESC ");
+			sb.append("   ORDER BY hitCount DESC ");
 			sb.append("   FETCH FIRST 3 ROWS ONLY ");
 			
 			pstmt = conn.prepareStatement(sb.toString());
