@@ -59,11 +59,11 @@
 			</table>
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
-			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
-			      <th width="60" style="color: #787878;">아이디</th>
+			  <tr align="center" bgcolor="#B7F0B1" height="50" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
+			      <th width="150" style="color: #787878;">아이디</th>
 			      <th style="color: #787878;">이름</th>
-			      <th width="100" style="color: #787878;">전화번호</th>
-			      <th width="100" style="color: #787878;">가입일</th>
+			      <th width="150" style="color: #787878;">전화번호</th>
+			      <th width="200" style="color: #787878;">가입일</th>
 			      <th width="100" style="color: #787878;">회원삭제</th>
 			  </tr>
 			 

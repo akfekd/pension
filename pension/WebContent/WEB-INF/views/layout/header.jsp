@@ -50,8 +50,6 @@ function deleteMember(userId) {
                 <span style="color:blue;">${sessionScope.member.userName}</span>님
                     &nbsp;|&nbsp;
                     <a href="${pageContext.request.contextPath}/member/logout.do">로그아웃</a>
-           	
-           		<a href="${pageContext.request.contextPath}/member/update.do">정보수정</a>
             </c:if>
            		
         </div>

@@ -269,7 +269,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		try {
 			sb.append("SELECT rsvtNum, userId, roomId,TO_CHAR(rsvtStart, 'YYYY-MM-DD') rsvtStart, TO_CHAR(rsvtEnd, 'YYYY-MM-DD') rsvtEnd, ");
-			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum ");
+			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum, rsvtPrice ");
 			sb.append(" FROM reservation");
 			sb.append(" WHERE roomId=?");
 			sb.append(" ORDER BY rsvtStart DESC");
@@ -288,11 +288,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 				dto.setRsvtEnd(rs.getString("rsvtEnd"));
 				dto.setCreated(rs.getString("created"));
 				dto.setGuestNum(rs.getInt("guestNum"));
-				if(rs.getString("rsvtEnd").equals(rs.getString("rsvtStart"))) {
-					dto.setDay((Integer.parseInt(rs.getString("rsvtEnd").replaceAll("\\-", ""))+1)-Integer.parseInt(rs.getString("rsvtStart").replaceAll("\\-", "")));
-				}else {
-					dto.setDay(Integer.parseInt(rs.getString("rsvtEnd").replaceAll("\\-", ""))-Integer.parseInt(rs.getString("rsvtStart").replaceAll("\\-", "")));
-				}
+				dto.setRsvtPrice(rs.getString("rsvtPrice"));
 				list.add(dto);
 			}
 			

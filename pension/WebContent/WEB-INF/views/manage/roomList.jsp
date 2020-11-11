@@ -47,7 +47,7 @@
 			</table>
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
-			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
+			  <tr align="center" bgcolor="#B7F0B1" height="50" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
 			      <th width="150" style="color: #787878;">방이름</th>
 			      <th width="150" style="color: #787878;">정보</th>
 			      <th width="100" style="color: #787878;">1박 요금</th>
@@ -81,19 +81,6 @@
 			   <tr height="40">
 			      <td align="left" width="100">
 			          <button type="button" class="btn" onclick="javascript:location.href='${pageContext.request.contextPath}/manage/roomList.do';">새로고침</button>
-			      </td>
-			      <td align="center">
-			          <form name="searchForm" action="${pageContext.request.contextPath}/bbs/list.do" method="post">
-			              <select name="condition" class="selectField">
-			                  <option value="all"  ${condition=="all"?"selected='selected'":""}>제목+내용</option>
-			                  <option value="subject"  ${condition=="subject"?"selected='selected'":""}>제목</option>
-			                  <option value="userName" ${condition=="userName"?"selected='selected'":""}>작성자</option>
-			                  <option value="content"  ${condition=="content"?"selected='selected'":""}>내용</option>
-			                  <option value="created"  ${condition=="created"?"selected='selected'":""}>등록일</option>
-			            </select>
-			            <input type="text" name="keyword" class="boxTF" value="${keyword}">
-			            <button type="button" class="btn" onclick="searchList()">검색</button>
-			        </form>
 			      </td>
 			   </tr>
 			</table>

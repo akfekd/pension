@@ -59,7 +59,7 @@
 			</table>
 			
 			<table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
-			  <tr align="center" bgcolor="#eeeeee" height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
+			  <tr align="center" bgcolor="#B7F0B1" height="50" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"> 
 			      <th width="150" style="color: #787878;">방이름</th>
 			      <th width="100" style="color: #787878;">인원수</th>
 			      <th width="150" style="color: #787878;">입실일</th>
@@ -78,7 +78,7 @@
 			      <td>${dto.rsvtStart}</td>
 			      <td>${dto.rsvtEnd}</td>
 			      <td>${dto.created}</td>
-			      <td>${dto.day}</td>
+			      <td>${dto.rsvtPrice}</td>
 			      <td>
 			          <button type="button" class="btn" onclick="deleteRaservation('${dto.rsvtNum}','${dto.userId}');">예약취소</button>
 			    </td>
