@@ -549,7 +549,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 			sb.append("   FROM restaurant r ");
 			sb.append("   JOIN member1 m ");
 			sb.append("   ON r.userId = m.userId ");
-			sb.append("   ORDER BY num DESC ");
+			sb.append("   ORDER BY hitCount DESC ");
 			sb.append("   FETCH FIRST 3 ROWS ONLY ");
 			
 			pstmt = conn.prepareStatement(sb.toString());
