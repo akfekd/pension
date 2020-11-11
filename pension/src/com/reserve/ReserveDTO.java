@@ -8,8 +8,14 @@ public class ReserveDTO {
 	private String created;
 	private int guestNum;
 	private int rsvtNum;
-	private String price;
+	private String rsvtPrice;
 	
+	public String getRsvtPrice() {
+		return rsvtPrice;
+	}
+	public void setRsvtPrice(String rsvtPrice) {
+		this.rsvtPrice = rsvtPrice;
+	}
 	public String getRsvtStart() {
 		return rsvtStart;
 	}
@@ -64,12 +70,7 @@ public class ReserveDTO {
 	public void setGuestNum(int guestNum) {
 		this.guestNum = guestNum;
 	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
+
 	
 	
 }

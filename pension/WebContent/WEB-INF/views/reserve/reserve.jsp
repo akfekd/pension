@@ -52,12 +52,29 @@ function infoReserve(roomId, roomName, guestnum, price) {
 	f.guestnum.value=guestnum;
 	document.getElementById("spanRoomName").innerHTML=roomName;
 	f.price.value=price;
+	
+	$('#reservebox').attr("style", "visibility:visible");
 }
 
 function reserveOk() {
 	var f = document.reserveForm;
 	
-	
+	var str = f.rsvtStart.value;
+   	var str2 = f.rsvtEnd.value;
+    if(!str2) {
+        alert("날짜를 선택해 주세요. ");
+        f.rsvtEnd.focus();
+        return;
+    }
+    
+    var sdt = new Date(str);
+    var edt = new Date(str2);
+    var dateDiff = Math.ceil((edt.getTime()-sdt.getTime())/(1000*3600*24));
+	var multi;
+    multi=f.price.value*dateDiff;
+    f.price.value=multi;
+    
+    
 	f.action="${pageContext.request.contextPath}/reserve/${mode}_ok.do";
 	
 	f.submit();
@@ -96,8 +113,10 @@ function changeDate(obj) {
 	
 	document.getElementsByName("rsvtEnd")[0].setAttribute('min', getInputDateFormat(today));
 	document.getElementsByName("rsvtEnd")[0].setAttribute('max', getInputDateFormat(maxDate));
-	
+
 	$('#rsvtEnd').attr("disabled", false);
+	$("input[type=date][name=rsvtEnd]").val("");
+
 }
 </script>
 
@@ -150,9 +169,9 @@ function changeDate(obj) {
     
     
 		<form name="reserveForm" method="post">
-			<table style="width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse; table-layout: fixed;">
+			<table id="reservebox" style="width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse; table-layout: fixed;  visibility: hidden">
 				<tr>	
-					<td width="150px">
+					<td width="200px">
 						<input type="text" name="guestnum" readonly="readonly" style="width: 15px; border: none;">인 기준
 					</td>
 				</tr>
@@ -164,29 +183,34 @@ function changeDate(obj) {
 				</tr>
 				<tr>
 					<td>
-					가격 : <input type="text" name="price" readonly="readonly" style="width: 50px; border: none;">원
+					1박 가격 : <input type="text" name="price" readonly="readonly" style="width: 50px; border: none;">원
 					</td>
 				</tr>
 
 
 				<tr>
-					<td>숙박 예정일</td>
-					<td>
+					<td>숙박 예정일&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="date" name="rsvtStart" onchange="changeDate(this)">
 						-<input type="date" id="rsvtEnd" name="rsvtEnd" disabled="disabled">
 					</td>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
 				</tr>
 			</table>
 			
              
              
              
-             
+             <div style="text-align: center; position: relative; height: 200px;">
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
+			</div>
+			
+<div class="footer">
+    <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+</div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.ui.datepicker-ko.js"></script>
 		</form>
 	</div>
 </div>

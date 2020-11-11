@@ -22,8 +22,8 @@ public class ReserveDAOImpl implements ReserveDAO {
 		
 		try {
 			
-			sql="INSERT INTO reservation (userId, roomId, rsvtStart, rsvtEnd, created, guestnum, rsvtNum)"
-					+ "VALUES (?, ?, ?, ?, SYSDATE, ?, RESERVATION_SEQ.NEXTVAL)";
+			sql="INSERT INTO reservation (userId, roomId, rsvtStart, rsvtEnd, created, guestnum, rsvtNum, rsvtPrice)"
+					+ "VALUES (?, ?, ?, ?, SYSDATE, ?, RESERVATION_SEQ.NEXTVAL, ?)";
 		
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getUserId());
@@ -31,6 +31,7 @@ public class ReserveDAOImpl implements ReserveDAO {
 			pstmt.setString(3, dto.getrsvtStart());
 			pstmt.setString(4, dto.getrsvtEnd());
 			pstmt.setInt(5, dto.getGuestNum());
+			pstmt.setString(6, dto.getRsvtPrice());
 
 			result=pstmt.executeUpdate();
 			

@@ -86,16 +86,16 @@ public class ReserveServlet extends HttpServlet {
 			dto.setUserId(info.getUserId());
 			dto.setRoomId(req.getParameter("roomId"));
 			dto.setGuestNum(Integer.parseInt(req.getParameter("guestnum")));
-			dto.setPrice(req.getParameter("price"));
+			dto.setRsvtPrice(req.getParameter("price"));
 			dto.setrsvtStart(req.getParameter("rsvtStart"));
 			dto.setrsvtEnd(req.getParameter("rsvtEnd"));
-			
+
 			dao.insertReservation(dto);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		resp.sendRedirect(cp+"/reserve/reserve.do");
+		resp.sendRedirect(cp+"/manage/list.do");
 	}
 	
 	protected void b(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
