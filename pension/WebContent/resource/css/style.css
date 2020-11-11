@@ -5,11 +5,12 @@
 }
 
 body {
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+      font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     font-size: 14px;
     font-weight: bold;
     /* line-height: 1.42857143; */
-	/* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
+   /* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
+    
 }
 
 a {
@@ -25,15 +26,16 @@ a:hover, a:active {
 }
 
 .btn {
-    color:#333333;
+      color:#333333;
     font-weight:900;
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     border:1px solid #cccccc;
     background-color:#fff;
     text-align:center;
     cursor:pointer;
     padding:3px 10px 5px;
     border-radius:4px;
+    
 }
 .btn:active, .btn:focus, .btn:hover {
     background-color:#e6e6e6;
@@ -50,22 +52,24 @@ a:hover, a:active {
 }
 
 .btnConfirm {
-    font-size: 15px; 
+        font-size: 15px; 
     border:none;
     color:#ffffff;
-    background:#507CD1;
+    background:#F54F29;
     width: 360px;
     height: 50px;
     line-height: 50px;
     border-radius:4px;
+    
 }
 
 .boxTF {
-    border:1px solid #999999;
+       border:1px solid #999999;
     padding:3px 5px 5px;
     border-radius:4px;
     background-color:#ffffff;
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+   
 }
 .boxTF[readonly] {
 	background-color:#eeeeee;
@@ -76,7 +80,7 @@ a:hover, a:active {
     border:1px solid #999999;
     padding:3px 5px 3px;
     border-radius:4px;
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
 }
 
 .boxTA {
@@ -85,5 +89,5 @@ a:hover, a:active {
     padding:3px 5px;
     border-radius:4px;
     background-color:#ffffff;
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+   font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
 }

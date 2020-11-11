@@ -1,13 +1,18 @@
 @charset "UTF-8";
 
 .header {
-    width:100%;
+       color: #fff;
+      font-size: 16px;
+        font-family:"나눔스퀘어OTF Bold","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    width:1900px;
     text-align:left;
+    
+    
 }
 
 .container {
   
-    width:2000px;
+    width:1900px;
     text-align:left;
 }
 
@@ -15,7 +20,7 @@
     clear:both;
     margin: 0px auto 15px;
     min-height: 450px;
-    width: 1600px;
+    width: 1900px;
 }
 
 .body-title {
@@ -23,22 +28,22 @@
     padding-top: 20px;
     padding-bottom: 5px;
     margin: 0 0 25px 0;
-    border-bottom: 1px solid #dddddd;
+    
 }
 .body-title h3 {
     font-size: 23px;
     min-width: 300px;
-    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
-    font-weight: bold;
+    font-family:"나눔스퀘어OTF Bold","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     margin: 0 0 -5px 0;
     padding-bottom: 5px;
     display: inline-block;
-    border-bottom: 3px solid #424951;
+    border-bottom: 5px solid #FFD393;
 }
+	
 
 .footer {
     clear:both;
-    width:100%;
+    width:1900px;
 }
 
 /* header */
@@ -64,27 +69,27 @@
 
 /* footer */
 .footer {
-    width:100%;
+    color: #fff;
+    width:1900px;
     height:50px;
     margin:5px auto;
     text-align:center;
-    background-color: #ffffff;
+    background-color: #405952;
     line-height: 50px;
-    border-top:1px solid #cccccc;
+	
 }
 
 /* menu */
 .menu {
 
+       color: #fff;
     margin:0px auto;
     width: 960px;
     min-height: 40px;
     clear: both;
     border-radius: 4px;
     /*box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);*/
-    background-color: #F2FFED;
-    border: 1px solid #e7e7e7;
-    box-sizing: border-box;
+
 }
 
 ul.nav {
@@ -101,17 +106,17 @@ ul.nav li {
 ul.nav li a {
   float: left;
   line-height: 40px;
-  color: #555;
   text-decoration: none;
   margin: 0;
   padding: 0 30px;
 }
 
 ul.nav .current a, ul.nav li:hover > a {
-  color: #333;
+   color: #fff;
   font-weight : 900;
   text-decoration: none;
-  background: #AAD7A5;
+  background: #FF974F;
+ 
 }
 
 ul.nav ul {
@@ -119,25 +124,25 @@ ul.nav ul {
 }
 
 ul.nav li:hover > ul {
-  position: absolute;
+ position: absolute;
   display: block;
   width: 960px;
   height: 40px;
   margin: 40px 0 0 -1px;
-  background: #AAD7A5;
-  border: 1px solid #AAD7A5;
+  background: #FF974F;
   z-index: 101;
   box-sizing: border-box;
+ 
 }
 
 ul.nav li:hover > ul li a {
-  float: left;
+ float: left;
   line-height: 39px;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   margin: 0;
   padding: 0 20px 0 20px;
-  background: #AAD7A5;
+ 
 }
 
 ul.nav li:hover > ul li a:hover {
