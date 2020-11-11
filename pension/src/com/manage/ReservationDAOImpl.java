@@ -21,7 +21,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		try {
 			sb.append("SELECT rsvtNum, userId, roomId,TO_CHAR(rsvtStart, 'YYYY-MM-DD') rsvtStart, TO_CHAR(rsvtEnd, 'YYYY-MM-DD') rsvtEnd, ");
-			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum ");
+			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum, rsvtPrice");
 			sb.append(" FROM reservation");
 			sb.append(" WHERE userId=?");
 			sb.append(" ORDER BY rsvtNum ASC");
@@ -42,6 +42,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 				dto.setRsvtEnd(rs.getString("rsvtEnd"));
 				dto.setCreated(rs.getString("created"));
 				dto.setGuestNum(rs.getInt("guestNum"));
+				dto.setRsvtPrice(rs.getString("rsvtPrice"));
 				list.add(dto);
 			}
 			
@@ -74,7 +75,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 		
 		try {
 			sql="SELECT rsvtNum, userId, roomId,TO_CHAR(rsvtStart, 'YYYY-MM-DD') rsvtStart, TO_CHAR(rsvtEnd, 'YYYY-MM-DD') rsvtEnd, "
-				+" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum"	
+				+" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum, rsvtPrice "	
 				+"  FROM reservation WHERE rsvtNum=?";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, rsvtNum);
@@ -88,6 +89,8 @@ public class ReservationDAOImpl implements ReservationDAO{
 				dto.setRsvtEnd(rs.getString("rsvtEnd"));
 				dto.setCreated(rs.getString("created"));
 				dto.setGuestNum(rs.getInt("guestNum"));
+				dto.setRsvtPrice(rs.getString("rsvtPrice"));
+				dto.setDay(Integer.parseInt(rs.getString("rsvtEnd").replaceAll("\\-", ""))-Integer.parseInt(rs.getString("rsvtStart").replaceAll("\\-", "")));
 
 			}
 		} catch (SQLException e) {

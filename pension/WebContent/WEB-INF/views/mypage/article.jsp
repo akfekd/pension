@@ -46,7 +46,7 @@ function deleteBoard(rsvtNum) {
 			<table style="width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse;">
 			<tr height="35" style="border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">
 			    <td colspan="2" align="center">
-				   ${dto.roomId}
+				   예약한 방 : ${dto.roomId}
 			    </td>
 			</tr>
 			
@@ -61,7 +61,10 @@ function deleteBoard(rsvtNum) {
 			
 			<tr style="border-bottom: 1px solid #cccccc;">
 			  <td colspan="2" align="left" style="padding: 10px 5px;" valign="top" height="200">
-			      1111
+			      입실일 : ${dto.rsvtStart} <br>
+			      퇴실일 : ${dto.rsvtEnd}<br>
+			      숙박 일 : ${dto.day} 박<br>
+			      총 숙박비용 : ${dto.rsvtPrice}
 			   </td>
 			</tr>
 			
