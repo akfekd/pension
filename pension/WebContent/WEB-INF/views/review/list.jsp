@@ -94,7 +94,7 @@ function searchList(value) {
 	<table class="reviewLayout" style="border-collapse: collapse; border-spacing: 0;">
 
 		<tr class="reviewheader" height="40" style="border-radius: 10px;">
-			<td style="padding-left: 10px; font-weight: bold; width: 8%">${dto.roomName}</td>
+			<td style="padding-left: 10px; font-weight: bold; width: 18%">${dto.roomName}</td>
 			<td class="starLayout" style="width: 8%">			
 			<c:if test="${dto.star==1}">★</c:if>			
 			<c:if test="${dto.star==2}">★★</c:if>			
