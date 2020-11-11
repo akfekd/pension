@@ -79,7 +79,7 @@
          <tr> 
                <td style="color: #FF5A5A">HOT</td>
                <td align="left" style="padding-left: 10px;">
-                    <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+                    <a href="${articleUrl1}${dto.subject}&num=${dto.num}">${dto.subject}</a>
                      
                </td>
                <td>${dto.userName}</td>
@@ -101,7 +101,7 @@
          <tr> 
                <td style="color: #FF5A5A">HOT</td>
                <td align="left" style="padding-left: 10px;">
-                    <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+                    <a href="${articleUrl3}${dto.subject}&num=${dto.num}">${dto.subject}</a>
                      
                </td>
                <td>${dto.userName}</td>
@@ -155,7 +155,7 @@
          <tr> 
                <td style="color: #FF5A5A">HOT</td>
                <td align="left" style="padding-left: 10px;">
-                    <a href="${articleUrl}&num=${dto.num}">${dto.subject}</a>
+                    <a href="${articleUrl2}${dto.subject}&num=${dto.num}">${dto.subject}</a>
                      
                </td>
                <td>${dto.userName}</td>
