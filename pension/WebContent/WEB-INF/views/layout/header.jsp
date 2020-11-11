@@ -30,15 +30,16 @@ function deleteMember(userId) {
 	}
 
 </script>
-
-<div class="header-top">
-    <div class="header-left">
+<ul>
+    <li style="position:relative; width: 300px; height: 70px; margin-left: 30px">
         <p style="margin: 2px;">
             <a href="${pageContext.request.contextPath}/" style="text-decoration: none;">
-                <span style="width: 200px; height: 70; position: relative; left: 0; top:20px; color: #6FA869; filter: mask(color=red) shadow(direction=135) chroma(color=red);font-style: italic; font-family: arial black; font-size: 30px; font-weight: bold;">PENSION!!!</span>
+ 			<img style="position:relative; width: 200px; height: 70;  left: 0; " alt="logo" src="${pageContext.request.contextPath}/resource/images/LOGO.PNG">
+
             </a>
         </p>
-    </div>
+    </li>
+<li class="header-top">
     <div class="header-right">
         <div style="padding-top: 20px;  float: right;">
             <c:if test="${empty sessionScope.member}">
@@ -54,20 +55,13 @@ function deleteMember(userId) {
            		
         </div>
     </div>
-</div>
+</li>
 
-<div class="menu">
+<li class="menu">
     <ul class="nav">
         <li>
             <a href="${pageContext.request.contextPath}/reserve/reserve.do">예약</a>
-            <!-- <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-             -->
+         
         </li>
 			
         <li>
@@ -126,7 +120,7 @@ function deleteMember(userId) {
         <li style="float: right;"><a href="#">전체보기</a></li>
 
     </ul>      
-</div>
-
+</li>
+</ul>
 <div class="navigation">
 </div>

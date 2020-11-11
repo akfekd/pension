@@ -2,15 +2,15 @@
 
 * {
     margin:0; padding:0;
+   
 }
 
 body {
-      font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     font-size: 14px;
     font-weight: bold;
     /* line-height: 1.42857143; */
    /* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
-    
 }
 
 a {
@@ -18,7 +18,7 @@ a {
     color: #000000;
     text-decoration: none;
     /* line-height: 150%; */
-	/* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
+   /* box-sizing: border-box;*/  /* padding과 border는 크기에 포함되지 않음 */
 }
 a:hover, a:active {
     color: #F28011;
@@ -26,7 +26,7 @@ a:hover, a:active {
 }
 
 .btn {
-      color:#333333;
+    color:#333333;
     font-weight:900;
     font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
     border:1px solid #cccccc;
@@ -35,7 +35,6 @@ a:hover, a:active {
     cursor:pointer;
     padding:3px 10px 5px;
     border-radius:4px;
-    
 }
 .btn:active, .btn:focus, .btn:hover {
     background-color:#e6e6e6;
@@ -52,7 +51,7 @@ a:hover, a:active {
 }
 
 .btnConfirm {
-        font-size: 15px; 
+    font-size: 15px; 
     border:none;
     color:#ffffff;
     background:#F54F29;
@@ -60,34 +59,32 @@ a:hover, a:active {
     height: 50px;
     line-height: 50px;
     border-radius:4px;
-    
 }
 
 .boxTF {
-       border:1px solid #999999;
+    border:1px solid #9C9B7A;
     padding:3px 5px 5px;
     border-radius:4px;
     background-color:#ffffff;
     font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
-   
 }
 .boxTF[readonly] {
-	background-color:#eeeeee;
-	/* border: none;*/
+   background-color:#9C9B7A;
+   /* border: none;*/
 }
 
 .selectField {
-    border:1px solid #999999;
+    border:1px solid #9C9B7A;
     padding:3px 5px 3px;
     border-radius:4px;
-font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
 }
 
 .boxTA {
-    border:1px solid #999999;
+    border:1px solid #9C9B7A;
     height:150px;
     padding:3px 5px;
     border-radius:4px;
     background-color:#ffffff;
-   font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    font-family:"나눔스퀘어OTF","Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
 }
