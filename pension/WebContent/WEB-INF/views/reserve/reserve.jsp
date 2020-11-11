@@ -6,8 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>캠핑 예약</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/layout.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/jquery/css/smoothness/jquery-ui.min.css" type="text/css">
@@ -135,12 +136,13 @@ function changeDate(obj) {
 <!-- 헤더 부분 종료 -->
 
 <div class="container">
-    <div class="body-container" style="width: 700px;">
-    <div class="body-title">
-    	<h3>예약화면</h3>
+    <div class="body-container" style="width: 850px;">
+    <div class="body-title" style="border: none;">
+    	<i class="fas fa-campground" style="font-size: 24px; padding-bottom: 8px; color: orange;"></i><h3 style="min-width: 820px; border-bottom: 0px;">예약 정보 안내</h3>
+    	<hr style="color: orange; height: 3px; background: orange; border: none;">
     </div>
     
-    <p> 원하는 방을 골라주세요. </p>
+    <p> <h2> 예약하고자 하는 방을 클릭해 주세요. </h2> </p>
     
     <div>	
     	<table style="width: 700px; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse;">
@@ -152,8 +154,8 @@ function changeDate(obj) {
     			<c:out value="</tr><tr>" escapeXml="false"/>
     		</c:if>
     		<td width="300" align="center" >
-    			<div class="imgLayout" onclick="infoReserve('${dto.roomId}','${dto.roomName}','${dto.guestnum}','${dto.price}');">
-    				<img src="${pageContext.request.contextPath}/uploads/roominfo/${dto.saveFilename}" width="180" height="180" border="0">
+    			<div class="imgLayout" style="cursor: pointer;" onclick="infoReserve('${dto.roomId}','${dto.roomName}','${dto.guestnum}','${dto.price}');">
+    				<img src="${pageContext.request.contextPath}/uploads/roominfo/${dto.saveFilename}" width="180" height="180" border="0" style="border-radius: 12px;">
     				<span class="roomName">${dto.roomName}</span>
     			</div>
     	</c:forEach>
@@ -171,41 +173,38 @@ function changeDate(obj) {
     
     </div>
     
-    
+    <div></div>
 		<form name="reserveForm" method="post">
-			<table id="reservebox" style="width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse; table-layout: fixed;  visibility: hidden">
+			<table id="reservebox" style=" width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse; table-layout: fixed;  visibility: hidden;">
 				<tr>	
-					<td width="200px">
-						<input type="text" name="guestnum" readonly="readonly" style="width: 15px; border: none;">인 기준
+					<td width="200px" style="font-size: 26px; padding: 20px 0px;">
+						<i class="fas fa-users" style="color: tomato;"></i>&nbsp;&nbsp;<input type="text" name="guestnum" readonly="readonly" style="width: 20px; border: none; font-size: 26px">인 기준
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="font-size: 26px;">
 					<input type="hidden" name="roomId" readonly="readonly" style=" width:50px; border: none;">
-					선택하신 방 : <span id="spanRoomName"></span>
+					<i class="fas fa-door-open" style="color: tomato;"></i>&nbsp;&nbsp;선택하신 방 : <span id="spanRoomName"></span>
 					</td>
 				</tr>
 				<tr>
-					<td>
-					1박 가격 : <input type="text" name="price" readonly="readonly" style="width: 50px; border: none;">원
+					<td style="font-size: 26px; padding: 20px 0px;">
+					<i class="fas fa-bed" style="color: tomato;"></i>&nbsp;&nbsp;1박 가격 : <input type="text" name="price" readonly="readonly" style="width: 100px; border: none; font-size: 26px;">원
 					</td>
 				</tr>
 
 
 				<tr>
-					<td>숙박 예정일&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="date" name="rsvtStart" onchange="changeDate(this)">
-						-<input type="date" id="rsvtEnd" name="rsvtEnd" disabled="disabled">
+					<td style="font-size: 26px; padding: 0px;"><i class="fas fa-calendar-check" style="color: tomato;"></i>&nbsp;&nbsp;&nbsp;숙박 예정일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="date" name="rsvtStart" onchange="changeDate(this)" style="height: 32px; padding-top: 0px; vertical-align: bottom; font-size: 18px; border-radius: 10px;">
+						<h3 style="display: inline-block;">～</h3>&nbsp;<input type="date" id="rsvtEnd" name="rsvtEnd" disabled="disabled" style="height: 32px; padding-top: 0px; vertical-align: bottom; font-size: 18px; border-radius: 10px;">
 					</td>
 				</tr>
 				<tr>
 				</tr>
 			</table>
-			
              
-             
-             
-             <div style="text-align: center; position: relative; height: 200px;">
+             <div style="text-align: center; position: static; margin-top: 100px; ">
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
 			</div>
 			
