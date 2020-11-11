@@ -27,10 +27,19 @@ public class MainServlet extends MyServlet {
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String uri=req.getRequestURI();
+		String cp = req.getContextPath();
 		
 		BoardDAO dao =new BoardDAOImpl();
 		List<BoardDTO> list2;
 		list2 = dao.listCount();
+		
+		String articleUrl1 = cp+"/festival/article.do?page=1&condition=all&keyword=";
+		String articleUrl2 = cp+"/restaurant/article.do?page=1&condition=all&keyword=";
+		String articleUrl3 = cp+"/spot/article.do?page=1&condition=all&keyword=";
+		
+		
+		
+		
 		
 		SpotDAO dao1 =new SpotDAOImpl();
 		List<SpotDTO> list3;
@@ -40,7 +49,9 @@ public class MainServlet extends MyServlet {
 		List<RestaurantDTO> list4;
 		list4 = dao2.listCount();
 	
-		
+		req.setAttribute("articleUrl1",articleUrl1);
+		req.setAttribute("articleUrl2",articleUrl2);
+		req.setAttribute("articleUrl3",articleUrl3);
 		req.setAttribute("list2", list2);
 		req.setAttribute("list3", list3);
 		req.setAttribute("list4", list4);
