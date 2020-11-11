@@ -30,11 +30,11 @@ function deleteMember(userId) {
 	}
 
 </script>
-<ul>
+<ul style="list-style: none; margin: 0px; padding: 0px; background-color: #FFD393" >
     <li style="position:relative; width: 300px; height: 70px; margin-left: 30px">
         <p style="margin: 2px;">
             <a href="${pageContext.request.contextPath}/" style="text-decoration: none;">
- 			<img style="position:relative; width: 200px; height: 70;  left: 0; " alt="logo" src="${pageContext.request.contextPath}/resource/images/LOGO.PNG">
+ 			<img style="position:relative; width: 200px; height: 70;  left: 0; " alt="logo" src="${pageContext.request.contextPath}/resource/images/LOGO.png">
 
             </a>
         </p>

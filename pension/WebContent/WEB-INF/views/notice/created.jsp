@@ -56,7 +56,7 @@
 <div class="container">
     <div class="body-container" style="width: 700px;">
         <div class="body-title">
-            <h3><span style="font-family: Webdings">2</span> 공지사항 </h3>
+            <h3><span style="font-family: Webdings">2</span> ★이용전 필독사항★ </h3>
         </div>
         
         <div>
