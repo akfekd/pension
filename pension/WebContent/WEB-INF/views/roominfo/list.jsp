@@ -113,7 +113,7 @@ function searchList(value) {
 }
 
 function reserve_click() {
-	if(${sessionScope.member.userId}==null) {
+	if(${sessionScope.member.userId==null}) {
 		alert("로그인 후 이용가능합니다.");
 	} else {
 		var url="${pageContext.request.contextPath}/reserve/reserve.do";
@@ -158,8 +158,8 @@ function reserve_click() {
 		        	<br>
 		        	<p class="commentary"><span class="point">"</span>${dto.ment}<span class="point">"</span></p>
 		        	<br><br><br>
-		        		<button type="submit" class="morebtn" onclick="article('${dto.roomId}')">자세히 보기</button>
-		        		<button type="submit" class="morebtn" onclick="reserve_click()">예약하기</button>
+		        		<button type="submit" class="morebtn" onclick="article('${dto.roomId}');">자세히 보기</button>
+		        		<button type="submit" class="morebtn" onclick="reserve_click();">예약하기</button>
 	      		</div>
 	   	 	</div>
 	   	 	
