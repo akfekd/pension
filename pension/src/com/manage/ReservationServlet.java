@@ -72,7 +72,7 @@ public class ReservationServlet extends MyServlet {
 		if(offset<0)
 			offset=0;
 		
-		List<ReservationDTO> list=dao.listBoard(info.getUserId());
+		List<ReservationDTO> list=dao.listBoard(offset, rows, info.getUserId());
 		
 		// 리스트번호만들기
 		int listNum, n=0;
@@ -229,10 +229,10 @@ public class ReservationServlet extends MyServlet {
 		if(offset<0)
 			offset=0;
 		
-		List<ReservationDTO> list=dao.listRaservation(req.getParameter("roomId"));
+		List<ReservationDTO> list=dao.listRaservation(offset, rows, req.getParameter("roomId"));
 		
 		
-		String listUrl=cp+"/manage/roomList.do";
+		String listUrl=cp+"/manage/roomArticle.do?roomId="+req.getParameter("roomId");
 		String paging=util.paging(current_page, total_page, listUrl);
 		
 		req.setAttribute("list", list);

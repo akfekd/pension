@@ -157,7 +157,7 @@ public class MemberDAO {
 		return result;
    }
    
-   public List<MemberDTO> listMembe() {
+   public List<MemberDTO> listMembe(int offset, int rows) {
 	   List<MemberDTO> list=new ArrayList<MemberDTO>();
 	   PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -168,9 +168,11 @@ public class MemberDAO {
 			sb.append(" enabled, created,tel ");
 			sb.append(" FROM member1");
 			sb.append(" ORDER BY userName DESC");
-			//sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
+			sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
 			
 			pstmt=conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, offset);
+			pstmt.setInt(2, rows);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {

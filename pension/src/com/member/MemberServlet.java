@@ -108,7 +108,7 @@ public class MemberServlet extends HttpServlet{
 		
 		List<MemberDTO> list;
 		if(keyword.length()==0) {
-			list=dao.listMembe();
+			list=dao.listMembe(offset, rows);
 		} else {
 			list=dao.listMember(offset, rows, condition, keyword);
 		}

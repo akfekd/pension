@@ -13,7 +13,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	private Connection conn=DBConn.getConnection();
 	
 	@Override
-	public List<ReservationDTO> listBoard(String userId) {
+	public List<ReservationDTO> listBoard(int offset, int rows, String userId) {
 		List<ReservationDTO> list=new ArrayList<ReservationDTO>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -24,11 +24,13 @@ public class ReservationDAOImpl implements ReservationDAO{
 			sb.append(" TO_CHAR(created, 'YYYY-MM-DD') created, guestNum ");
 			sb.append(" FROM reservation");
 			sb.append(" WHERE userId=?");
-			sb.append(" ORDER BY created DESC");
-			//sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
+			sb.append(" ORDER BY rsvtNum ASC");
+			sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
 			
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setString(1, userId);
+			pstmt.setInt(2, offset);
+			pstmt.setInt(3, rows);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -261,7 +263,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	}
 
 	@Override
-	public List<ReservationDTO> listRaservation(String roomId) {
+	public List<ReservationDTO> listRaservation(int offset, int rows, String roomId) {
 		List<ReservationDTO> list=new ArrayList<ReservationDTO>();
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -273,10 +275,12 @@ public class ReservationDAOImpl implements ReservationDAO{
 			sb.append(" FROM reservation");
 			sb.append(" WHERE roomId=?");
 			sb.append(" ORDER BY rsvtStart DESC");
-			//sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
+			sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY");
 			
 			pstmt=conn.prepareStatement(sb.toString());
 			pstmt.setString(1, roomId);
+			pstmt.setInt(2, offset);
+			pstmt.setInt(3, rows);
 			
 			rs=pstmt.executeQuery();
 			while(rs.next()) {

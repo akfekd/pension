@@ -58,7 +58,7 @@
 			 <c:forEach var="dto" items="${list}">
 			  <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
 			      <td style="padding-left: 10px;">
-			           <a href="${articleUrl}?roomId=${dto.roomId}&price="${dto.price}>${dto.roomName}</a>
+			           <a href="${articleUrl}?roomId=${dto.roomId}&page=${page}">${dto.roomName}</a>
 			      </td>
 			      <td>${dto.ment}</td>
 			      <td>${dto.price}</td>
