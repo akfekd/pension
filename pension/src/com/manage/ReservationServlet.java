@@ -1,5 +1,5 @@
 package com.manage;
-
+//권철안
 import java.io.IOException;
 import java.util.List;
 
@@ -86,7 +86,6 @@ public class ReservationServlet extends MyServlet {
 		String articleUrl=cp+"/manage/article.do";
 		String paging=util.paging(current_page, total_page, listUrl);
 		
-		// /WEB-INF/views/notice/list.jsp에 넘겨줄 데이터
 		req.setAttribute("list", list);
 		req.setAttribute("dataCount", dataCount);
 		req.setAttribute("total_page", total_page);
@@ -184,7 +183,7 @@ public class ReservationServlet extends MyServlet {
 		int total_page=util.pageCount(rows, dataCount);
 		if(current_page>total_page) 
 			current_page=total_page;
-		// 일단 실행해봐
+
 		int offset=(current_page-1)*rows;
 		if(offset<0)
 			offset=0;

@@ -1,7 +1,5 @@
 package com.member;
-
-
-//세션에 정보를 저장할 클래스
+//권철안
 public class SessionInfo {
 	private String userId;
 	private String userName;

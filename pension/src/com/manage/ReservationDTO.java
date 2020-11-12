@@ -1,5 +1,5 @@
 package com.manage;
-
+//±ÇÃ¶¾È
 public class ReservationDTO {
 	private int  rsvtNum;
 	private String userId;

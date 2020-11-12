@@ -1,5 +1,5 @@
 package com.member;
-
+//±ÇÃ¶¾È
 public class MemberDTO {
 	private String userId;
 	private String userName;

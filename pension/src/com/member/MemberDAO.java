@@ -1,5 +1,5 @@
 package com.member;
-
+//권철안
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,11 +18,11 @@ public class MemberDAO {
       int result=0;
       PreparedStatement pstmt = null;
       String sql;
-      // member1 테이블과 member2 테이블에 회원 정보 저장
+ 
       
       try {
     	  
-    	  conn.setAutoCommit(false); //자동 커밋되지 않도록
+    	  conn.setAutoCommit(false); 
          sql = "INSERT INTO member1(userId, userName, userPwd, enabled, created, tel) "
                + " VALUES (?,?,?,1,SYSDATE,?) ";
               
@@ -34,24 +34,24 @@ public class MemberDAO {
 
            result=pstmt.executeUpdate();
            
-           conn.commit();//커밋
+           conn.commit();
       } catch (SQLIntegrityConstraintViolationException e) {
     	  try {
-			conn.rollback();// 예외발생하면 롤백
+			conn.rollback();
 		} catch (Exception e2) {
 		}
     	  e.printStackTrace();
     	  throw e;
       } catch (SQLDataException e) {
     	  try {
-  			conn.rollback();// 예외발생하면 롤백
+  			conn.rollback();
   		} catch (Exception e2) {
   		}
     	  e.printStackTrace();
     	  throw e;
       } catch (SQLException e) {
     	  try {
-    			conn.rollback();// 예외발생하면 롤백
+    			conn.rollback();
     	} catch (Exception e2) {
     	}
          e.printStackTrace();
@@ -64,17 +64,13 @@ public class MemberDAO {
 				}
 			}
 			try {
-				conn.setAutoCommit(true);//자동커밋되도록(기본)
+				conn.setAutoCommit(true);
 			} catch (Exception e2) {
-				// TODO: handle exception
 			}
 		}
 		return result;
 	}
    
-   //userId 조건에 만족하고
-   //member1과 member2를 outer join 하여 MemberDTO 객체에 담아서 반환
-   //email은 email,email2에 tel은 tel1, tel2, tel3에 담아저장한다
    public MemberDTO readMember(String userId) {
 	   MemberDTO dto=null;
 	      PreparedStatement pstmt=null;
@@ -177,8 +173,8 @@ public class MemberDAO {
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				MemberDTO dto=new MemberDTO();
-				dto.setUserId(rs.getString("userId")); // dto.setNum(rs.getInt(1));
-				dto.setUserName(rs.getString("userName"));  // dto.setName(rs.getString(2));
+				dto.setUserId(rs.getString("userId"));
+				dto.setUserName(rs.getString("userName"));  
 				dto.setCreated(rs.getString("created"));
 				dto.setTel(rs.getString("tel"));
 				list.add(dto);
@@ -271,7 +267,7 @@ public class MemberDAO {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				result=rs.getInt("cnt"); // result=rs.getInt(1);
+				result=rs.getInt("cnt");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

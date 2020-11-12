@@ -16,6 +16,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/js/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.min.js"></script>
 <script type="text/javascript">
+
+//권철안
 function deleteBoard(rsvtNum) {
 <c:if test="${sessionScope.member.userId=='admin' || sessionScope.member.userId==dto.userId}">
 	if(confirm("게시물을 삭제하시겠습니까 ?")) {

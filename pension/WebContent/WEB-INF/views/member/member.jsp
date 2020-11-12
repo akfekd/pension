@@ -17,6 +17,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/js/util.js"></script>
 
 <script type="text/javascript">
+
+//권철안
 function memberOk() {
 	var f = document.memberForm;
 	var str;

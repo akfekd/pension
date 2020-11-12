@@ -16,6 +16,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/js/util.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/jquery/js/jquery.min.js"></script>
 <script type="text/javascript">
+
+//권철안
 	function searchList() {
 		var f=document.searchForm;
 		f.submit();
