@@ -7,11 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bbs.BoardDTO;
-import com.member.MemberDTO;
 import com.util.DBConn;
 
-public class ReserveDAOImpl implements ReserveDAO {
+public class ReserveDAOImpl implements ReserveDAO { // ±èµ¿Çö
 	private Connection conn=DBConn.getConnection();
 	
 	@Override
@@ -28,8 +26,8 @@ public class ReserveDAOImpl implements ReserveDAO {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getUserId());
 			pstmt.setString(2, dto.getRoomId());
-			pstmt.setString(3, dto.getrsvtStart());
-			pstmt.setString(4, dto.getrsvtEnd());
+			pstmt.setString(3, dto.getRsvtStart());
+			pstmt.setString(4, dto.getRsvtEnd());
 			pstmt.setInt(5, dto.getGuestNum());
 			pstmt.setString(6, dto.getRsvtPrice());
 
@@ -49,22 +47,6 @@ public class ReserveDAOImpl implements ReserveDAO {
 		return result;
 	}
 
-	@Override
-	public int updateReservation(ReserveDTO dto) throws SQLException {
-		int result=0;
-		PreparedStatement pstmt=null;
-		String sql;
-		
-		try {
-			// ¸¶Àú ¼ÕºÁ¾ß µÊ roominfo¿¡¼­ Á¤º¸ ¹Þ¾Æ¿Ã °Å °í¹Î
-			sql="UPDATE reservation SET rsvStart=?, rsvEnd=?, guestnum=?, WHERE roomId=?, AND userId=?";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return result;
-	}
 
 
 	@Override
@@ -112,4 +94,110 @@ public class ReserveDAOImpl implements ReserveDAO {
 		return list;
 	}
 
+	@Override
+	public List<ReserveDTO> listReserve(String roomId) {
+		List<ReserveDTO> listReserve=new ArrayList<ReserveDTO>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+	
+		try {
+			
+			String sql;
+			sql="SELECT roomId, guestnum, rsvtPrice,rsvtStart,rsvtEnd FROM reservation ";
+		
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ReserveDTO dto=new ReserveDTO();
+				dto.setRoomId(rs.getString("roomId"));
+				dto.setGuestNum(rs.getInt("guestnum"));
+				dto.setRsvtPrice(rs.getString("rsvtPrice"));
+				dto.setRsvtStart(rs.getString("rsvtStart"));
+				dto.setRsvtEnd(rs.getString("rsvtEnd"));
+				listReserve.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e2) {
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e2) {
+				}
+			}
+		}
+		return listReserve;
+	}
+
+
+
+	@Override
+	public List<ReserveDTO> listReserve(String roomId, String rsvtStart, String rsvtEnd) {
+		List<ReserveDTO> listReserve=new ArrayList<ReserveDTO>();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+	
+		try {
+			
+			String sql;
+			sql="SELECT roomId, guestnum, rsvtPrice,rsvtStart,rsvtEnd FROM reservation "
+				+ " WHERE roomId=? "
+    			+" AND ( ( rsvtStart >= TO_DATE(?) AND rsvtEnd < TO_DATE(?) ) "
+	    		+"   OR ( rsvtStart <= TO_DATE(?) AND rsvtEnd >= TO_DATE(?) ) "
+		    	+"   OR ( rsvtEnd > TO_DATE(?) AND rsvtEnd < TO_DATE(?) ) "
+		    	+"   OR ( rsvtStart >= TO_DATE(?) AND rsvtStart < TO_DATE(?) ) ) ";
+
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, roomId);
+			
+			pstmt.setString(2, rsvtStart);
+			pstmt.setString(3, rsvtEnd);
+			
+			pstmt.setString(4, rsvtStart);
+			pstmt.setString(5, rsvtEnd);
+			
+			pstmt.setString(6, rsvtStart);
+			pstmt.setString(7, rsvtEnd);
+			
+			pstmt.setString(8, rsvtStart);
+			pstmt.setString(9, rsvtEnd);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ReserveDTO dto=new ReserveDTO();
+				dto.setRoomId(rs.getString("roomId"));
+				dto.setGuestNum(rs.getInt("guestnum"));
+				dto.setRsvtPrice(rs.getString("rsvtPrice"));
+				dto.setRsvtStart(rs.getString("rsvtStart"));
+				dto.setRsvtEnd(rs.getString("rsvtEnd"));
+				listReserve.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e2) {
+				}
+			}
+			
+			if(pstmt!=null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e2) {
+				}
+			}
+		}
+		return listReserve;
+
+	}
 }

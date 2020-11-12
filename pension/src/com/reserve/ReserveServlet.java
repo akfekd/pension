@@ -1,7 +1,6 @@
 package com.reserve;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.member.SessionInfo;
 
-@WebServlet("/reserve/*")
+@WebServlet("/reserve/*") // 김동현
 public class ReserveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -79,6 +78,7 @@ public class ReserveServlet extends HttpServlet {
 		ReserveDTO dto=new ReserveDTO();
 		String cp=req.getContextPath();
 		
+		
 		try {
 			HttpSession session=req.getSession();
 			SessionInfo info=(SessionInfo)session.getAttribute("member");
@@ -87,9 +87,25 @@ public class ReserveServlet extends HttpServlet {
 			dto.setRoomId(req.getParameter("roomId"));
 			dto.setGuestNum(Integer.parseInt(req.getParameter("guestnum")));
 			dto.setRsvtPrice(req.getParameter("price"));
-			dto.setrsvtStart(req.getParameter("rsvtStart"));
-			dto.setrsvtEnd(req.getParameter("rsvtEnd"));
+			dto.setRsvtStart(req.getParameter("rsvtStart"));
+			dto.setRsvtEnd(req.getParameter("rsvtEnd"));
 
+			
+			List<ReserveDTO> listReserve=dao.listReserve(dto.getRoomId(), dto.getRsvtStart(), dto.getRsvtEnd());
+
+			if(listReserve.size()>=1) {
+				List<RoomInfoDTO> listRoom;
+				listRoom=dao.listRoom();
+				req.setAttribute("listRoom", listRoom);
+				
+				String path="/WEB-INF/views/reserve/reserve.jsp";
+				req.setAttribute("mode", "reserve");
+
+				req.setAttribute("message", "이미 예약된 방입니다!!!");
+				forward(req, resp, path);
+				return;
+			}
+					
 			dao.insertReservation(dto);		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,8 +114,5 @@ public class ReserveServlet extends HttpServlet {
 		resp.sendRedirect(cp+"/manage/list.do");
 	}
 	
-	protected void b(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-	}
 
 }
