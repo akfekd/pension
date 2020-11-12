@@ -98,8 +98,8 @@ public class MemberDAO {
 	               String[] ss=dto.getTel().split("-");
 	               if(ss.length==3) {
 	                  dto.setTel1(ss[0]);
-	                  dto.setTel2(ss[0]);
-	                        dto.setTel1(ss[0]);
+	                  dto.setTel2(ss[1]);
+	                        dto.setTel3(ss[2]);
 	               }
 	            }
 	            
@@ -341,7 +341,7 @@ public class MemberDAO {
 		String sql;
 		
 		try {
-			sql="DELETE FROM member1 WHERE userId=?";
+			sql="DELETE FROM member1 WHERE userId=? ";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			result=pstmt.executeUpdate();
