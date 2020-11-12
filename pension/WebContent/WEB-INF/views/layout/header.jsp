@@ -117,7 +117,7 @@ function deleteMember(userId) {
         </li>
         </c:if>
 
-        <li style="float: right;"><a href="#">전체보기</a></li>
+        <li style="float: right;"><a href="${pageContext.request.contextPath}/main.do">전체보기</a></li>
 
     </ul>      
 </li>
