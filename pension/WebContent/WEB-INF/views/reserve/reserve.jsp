@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>캠핑 예약</title>
+<title>캠핑 예약</title> <!-- 김동현 -->
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" type="text/css">
@@ -205,18 +205,16 @@ function changeDate(obj) {
 				</tr>
 				<tr>
 				</tr>
-				<tr align="center" height="40" >
-			    	<td><span style="color: blue;">${message}</span></td>
-			  	</tr>
-			</table>
-			
-			
-             
-             <div style="text-align: center; position: static; margin-top: 50px; height: 50px; ">
-			<button class="btn" onclick="reserveOk();">예약 완료</button>
-			</div>
-			
+			</table>			
 		</form>
+		<br>
+		<br>
+		<div style="text-align: center;">
+			<span style="color: red; font-size: 32px;">${message}</span>
+		</div>	
+		<div style="text-align: center; position: static; margin-top: 50px; height: 50px; ">
+			<button class="btn" onclick="reserveOk();">예약 완료</button>
+		</div>
 	</div>
 </div>
 

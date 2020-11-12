@@ -1,6 +1,6 @@
 package com.reserve;
 
-public class RoomInfoDTO {
+public class RoomInfoDTO { // ±èµ¿Çö
 	private String roomId;
 	private String userId;
 	private String roomName;

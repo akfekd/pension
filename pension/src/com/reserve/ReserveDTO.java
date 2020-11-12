@@ -1,6 +1,6 @@
 package com.reserve;
 
-public class ReserveDTO {
+public class ReserveDTO { // ±èµ¿Çö
 	private String userId;
 	private String roomId;
 	private String rsvtStart;
@@ -45,18 +45,6 @@ public class ReserveDTO {
 	}
 	public void setRoomId(String roomId) {
 		this.roomId = roomId;
-	}
-	public String getrsvtStart() {
-		return rsvtStart;
-	}
-	public void setrsvtStart(String rsvtStart) {
-		this.rsvtStart = rsvtStart;
-	}
-	public String getrsvtEnd() {
-		return rsvtEnd;
-	}
-	public void setrsvtEnd(String rsvtEnd) {
-		this.rsvtEnd = rsvtEnd;
 	}
 	public String getCreated() {
 		return created;
