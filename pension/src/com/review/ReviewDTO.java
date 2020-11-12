@@ -1,5 +1,5 @@
 package com.review;
-
+//김다현
 public class ReviewDTO {
 	private String userId;
 	private String userName;
