@@ -13,7 +13,7 @@
    font-weight: bold; text-align: center;
    line-height: 65px;
    border: 1;
-   border-collapse: collapse;
+   border-collapse: collapse;  
 }
 .b-box{
    font-weight: bold; text-align: center;
@@ -66,7 +66,7 @@
 
 <div class="body-container">
 <div id="left-content">
-<table class="a-box">   
+<table class="a-box" style="margin-left: 30px;">   
    <tr class="tag1"><td colspan="5">주변 축제 인기글!</td></tr>
          <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;">
                <th width="60" style="color: #787878;">번호</th>
@@ -88,7 +88,7 @@
            </tr>
       </c:forEach>
 </table>
-<table class="b-box">
+<table class="b-box" style="margin-left: 30px;">
 <tr class="tag1"><td colspan="5">주변 관광지 인기글!</td></tr>
          <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
                <th width="60" style="color: #787878;">번호</th>
@@ -142,7 +142,7 @@
    </div>
 </div>
 <div id="right-content">
-<table class="c-box">
+<table class="c-box" style="margin-left: 30px;">
 <tr class="tag1"><td colspan="5">주변 맛집 인기글!</td></tr>
          <tr align="center" height="35" style="border-bottom: 1px solid #cccccc;"> 
                <th width="60" style="color: #787878;">번호</th>
