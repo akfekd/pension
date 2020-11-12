@@ -1,5 +1,5 @@
 package com.roominfo;
-
+//김다현
 public class RoomDTO {
 	private String userId;
 	private String roomId;
