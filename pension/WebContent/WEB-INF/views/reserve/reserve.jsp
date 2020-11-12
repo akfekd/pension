@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/layout.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/jquery/css/smoothness/jquery-ui.min.css" type="text/css">
 
+
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 .imgLayout {
 	width: 190px;
 	height: 205px;
@@ -39,6 +41,7 @@ input:focus {outline:none;}
 	text-overflow: ellipsis;
 	cursor: pointer;
 }
+
 </style>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resource/js/util.js"></script>
@@ -135,14 +138,14 @@ function changeDate(obj) {
 </div>
 <!-- 헤더 부분 종료 -->
 
-<div class="container">
-    <div class="body-container" style="width: 850px;">
+<div class="container" style="background: #e8e8e8;">
+    <div class="body-container" style="width: 850px; margin: 0px auto; background: white;">
     <div class="body-title" style="border: none;">
-    	<i class="fas fa-campground" style="font-size: 24px; padding-bottom: 8px; color: orange;"></i><h3 style="min-width: 820px; border-bottom: 0px;">예약 정보 안내</h3>
+    	&nbsp;&nbsp;&nbsp;<i class="fas fa-campground" style="font-size: 24px; padding-bottom: 8px; color: orange;"></i><h3 style="min-width: 800px; border-bottom: 0px; font-family: 'Jeju Hallasan', serif; font-weight: 100;">&nbsp;예약 정보 안내</h3>
     	<hr style="color: orange; height: 3px; background: orange; border: none;">
     </div>
     
-    <p> <h2> 예약하고자 하는 방을 클릭해 주세요. </h2> </p>
+    <p> <h2> &nbsp;&nbsp;예약하고자 하는 방을 클릭해 주세요. </h2> </p> 
     
     <div>	
     	<table style="width: 700px; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse;">
@@ -178,35 +181,38 @@ function changeDate(obj) {
 			<table id="reservebox" style=" width: 100%; margin: 20px auto 0px; border-spacing: 0px; border-collapse: collapse; table-layout: fixed;  visibility: hidden;">
 				<tr>	
 					<td width="200px" style="font-size: 26px; padding: 20px 0px;">
-						<i class="fas fa-users" style="color: tomato;"></i>&nbsp;&nbsp;<input type="text" name="guestnum" readonly="readonly" style="width: 20px; border: none; font-size: 26px">인 기준
+						&nbsp;&nbsp;<i class="fas fa-users" style="color: tomato;"></i>&nbsp;&nbsp;<input type="text" name="guestnum" readonly="readonly" style="width: 20px; border: none; font-size: 26px">인 기준
 					</td>
 				</tr>
 				<tr>
 					<td style="font-size: 26px;">
 					<input type="hidden" name="roomId" readonly="readonly" style=" width:50px; border: none;">
-					<i class="fas fa-door-open" style="color: tomato;"></i>&nbsp;&nbsp;선택하신 방 : <span id="spanRoomName"></span>
+					&nbsp;&nbsp;<i class="fas fa-door-open" style="color: tomato;"></i>&nbsp;&nbsp;선택하신 방 : <span id="spanRoomName"></span>
 					</td>
 				</tr>
 				<tr>
 					<td style="font-size: 26px; padding: 20px 0px;">
-					<i class="fas fa-bed" style="color: tomato;"></i>&nbsp;&nbsp;1박 가격 : <input type="text" name="price" readonly="readonly" style="width: 100px; border: none; font-size: 26px;">원
+					&nbsp;&nbsp;<i class="fas fa-bed" style="color: tomato;"></i>&nbsp;&nbsp;1박 가격 : <input type="text" name="price" readonly="readonly" style="width: 100px; border: none; font-size: 26px;">원
 					</td>
 				</tr>
 
 
 				<tr>
-					<td style="font-size: 26px; padding: 0px;"><i class="fas fa-calendar-check" style="color: tomato;"></i>&nbsp;&nbsp;&nbsp;숙박 예정일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<td style="font-size: 26px; padding: 0px;">&nbsp;&nbsp;<i class="fas fa-calendar-check" style="color: tomato;"></i>&nbsp;&nbsp;&nbsp;숙박 예정일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="date" name="rsvtStart" onchange="changeDate(this)" style="height: 32px; padding-top: 0px; vertical-align: bottom; font-size: 18px; border-radius: 10px;">
 						<h3 style="display: inline-block;">～</h3>&nbsp;<input type="date" id="rsvtEnd" name="rsvtEnd" disabled="disabled" style="height: 32px; padding-top: 0px; vertical-align: bottom; font-size: 18px; border-radius: 10px;">
 					</td>
 				</tr>
 				<tr>
 				</tr>
+				<tr align="center" height="40" >
+			    	<td><span style="color: blue;">${message}</span></td>
+			  	</tr>
 			</table>
 			
 			
              
-             <div style="text-align: center; position: static; margin-top: 100px; ">
+             <div style="text-align: center; position: static; margin-top: 50px; height: 50px; ">
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
 			</div>
 			
@@ -215,7 +221,7 @@ function changeDate(obj) {
 </div>
 
 
-<div class="footer">
+<div class="footer" style="margin-top: 0px;">
     <jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 </div>
 
