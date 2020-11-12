@@ -203,6 +203,8 @@ function changeDate(obj) {
 				<tr>
 				</tr>
 			</table>
+			
+			
              
              <div style="text-align: center; position: static; margin-top: 100px; ">
 			<button class="btn" onclick="reserveOk();">예약 완료</button>
