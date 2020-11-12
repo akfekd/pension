@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>캠핑 예약</title> <!-- 김동현 -->
+<title>하늘숲 글램핑 파크</title> <!-- 김동현 -->
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" type="text/css">

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>review</title>
+<title>후기</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/style.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/layout.css" type="text/css">
