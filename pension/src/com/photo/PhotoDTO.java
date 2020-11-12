@@ -1,5 +1,5 @@
 package com.photo;
-
+////±è¼º¿ø
 public class PhotoDTO {
 	private int num;
 	private String userId, userName;

@@ -1,5 +1,5 @@
 package com.spot;
-
+////±è¼º¿ø
 public class SpotDTO {
 	private int num,listNum;
 	private String userId, userName;

@@ -1,5 +1,5 @@
 package com.festival;
-
+//±è¼º¿ø
 public class BoardDTO {
 	private int num,listNum;
 	private String userId, userName;

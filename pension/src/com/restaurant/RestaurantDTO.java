@@ -1,5 +1,5 @@
 package com.restaurant;
-
+////±è¼º¿ø
 public class RestaurantDTO {
 	private int num,listNum;
 	private String userId, userName;
